@@ -3,15 +3,77 @@
 <head>
 <title>Facebook Login JavaScript Example</title>
 <meta charset="UTF-8">
+<style>
+	body{
+		font-family: CgFuturaMaxi;
+		font-weight: bold;
+	}
+	.holder
+	{
+		position: absolute;
+		top:0;
+		left:0;
+		width: 1280px;
+		height:720px;
+	}
+
+	.love{
+   
+    border-radius: 75px 0 0 75px;
+    position: absolute;
+    top: 538px;
+    right: 842px;
+    color: #e9168c;
+    background-color: white;
+    font-size: 68px;
+    line-height: 135px;
+    text-align: right;
+    padding-right: 30px;
+    padding-left: 37px;
+    height:135.556px;
+	}
+	.haha{
+	border-radius: 0 75px 75px 0;	
+	position: absolute;
+    top: 538px;
+	left: 841px;
+	color: #47c422;
+	background-color: white;
+	font-size: 68px;
+	line-height: 135px;
+	text-align: left;
+	padding-left: 30px;
+    padding-right: 37px;
+    height:135.556px;
+	}
+	.bgdiv
+	{
+		display:none;
+		width:1280px;
+		height:720px;
+		background-image:url('bgtest.jpg');
+		z-index: -100;
+		position: absolute;
+		top:0px;
+		left:0px;
+	}
+
+
+</style>
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="fbvote.js"></script>
+<script src="fbvote.js?rr3667765535"></script>
 <div id="logInStuff">
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 <div id="status">
 </div>
 </div>
+<div class="holder">
+<div id="lovecount" class="love">6,100</div>
+<div id="hahacount" class="haha">18,773</div>
+</div>
+<div class="bgdiv"></div>
 </body>
 </html>

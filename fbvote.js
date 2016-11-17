@@ -1,13 +1,22 @@
-
 //values will include the pageID, postID, and backup UserToken
 var currentValues;
+var apResults;
 var backUpMode = false;
+var loveCount = 0;
+var hahaCount = 0;
+var oldlove = 0;
+var oldhaha = 0;
 
+var newVoteNumber;
+var cycler = 50;
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 //This Script will log the User in to Facebook, Once the app has 
 
 // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
+function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     // The response object is returned with a status field that lets the
@@ -15,110 +24,252 @@ var backUpMode = false;
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
+        // Logged into your app and Facebook.
+        testAPI();
     } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+        // The person is logged into Facebook, but not your app.
+        document.getElementById('status').innerHTML = 'Please log ' +
+            'into this app.';
     } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+        // The person is not logged into Facebook, so we're not sure if
+        // they are logged into this app or not.
+        document.getElementById('status').innerHTML = 'Please log ' +
+            'into Facebook.';
     }
-  }
+}
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
+// This function is called when someone finishes with the Login
+// Button.  See the onlogin handler attached to it in the sample
+// code below.
+function checkLoginState() {
     FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+        statusChangeCallback(response);
     });
-  }
+}
 
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '332002107168006',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  });
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: '332002107168006',
+        cookie: true, // enable cookies to allow the server to access 
+        // the session
+        xfbml: true, // parse social plugins on this page
+        version: 'v2.8' // use graph api version 2.8
+    });
 
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
+    // Now that we've initialized the JavaScript SDK, we call 
+    // FB.getLoginStatus().  This function gets the state of the
+    // person visiting this page and can return one of three states to
+    // the callback you provide.  They can be:
+    //
+    // 1. Logged into your app ('connected')
+    // 2. Logged into Facebook, but not your app ('not_authorized')
+    // 3. Not logged into Facebook and can't tell if they are logged into
+    //    your app or not.
+    //
+    // These three cases are handled in the callback function.
 
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
 
-  };
+};
 
-  // Load the SDK asynchronously
-  (function(d, s, id) {
+// Load the SDK asynchronously
+(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+}(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
+// Here we run a very simple test of the Graph API after login is
+// successful.  See statusChangeCallback() for when this call is made.
+function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      //  console.log('Successful login for: ' + response.name);
+        document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
         //check if we can get the userToken to work
+        $("#logInStuff").fadeOut();
+        loadAndCheck();
     });
-  }
+}
 
 
-  function loadAndCheck() {
+function loadAndCheck() {
     //we will first load the page values, then see if the API is letting us get the info, if it is, we can run the API , otherwise we gotta make user tokens.
-    $.getJSON( "values.json?"+Math.random(), function( data ) {
-    currentValues = data;
+    $.getJSON("values.json?" + Math.random(), function(data) {
+        currentValues = data;
+        FB.api(
+            currentValues.pageID + "_" + currentValues.postID + "/insights/post_reactions_by_type_total",
+            function(response) {
+                if (response && !response.error) {
+                    console.log(response);
+                    console.log("it's working");
+                    apResults = response;
+                } else {
+                    console.log("Backup Mode, makeSureToKeepAPIKeyFresh");
+                    backUpMode = true;
+                }
+            }
+        );
+
+    });
+
+   // setInterval(mainVoteLoop, 5000);
+}
+
+function checkShareVotes(hahac, lovec) {
     FB.api(
-    currentValues.pageID+"_"+currentValues.postID+"/insights/post_reactions_by_type_total",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-      }
-      else
-      {
-        console.log("Backup Mode, makeSureToKeepAPIKeyFresh");
-        backUpMode = true;
-      }
+        currentValues.pageID + "_" + currentValues.postID + "/insights/post_reactions_by_type_total",
+        function(response) {
+            console.log(response);
+            apResults = response;
+            oldlove = loveCount;
+            oldhaha = hahaCount;
+            loveadd = apResults.data[0].values[0].value.love - lovec;
+            hahaadd = apResults.data[0].values[0].value.haha - hahac;
+            
+        });
+
+}
+
+
+var hahaadd = 0;
+var loveadd = 0;
+var rthaha = 0;
+var rtlove = 0;
+
+var lastlove = 0;
+var lasthaha = 0;
+
+
+setTimeout(checkRealtimeVotes, 5000);
+
+function checkRealtimeVotes() {
+
+	rthaha = 0;
+	rtlove = 0
+    var theCommand = currentValues.pageID + "_" + currentValues.postID + "/reactions/";
+    var apKey = {};
+    if (backUpMode) {
+        apKey = { access_token: currentValues.UserToken };
     }
+    FB.api(
+        currentValues.pageID + "_" + currentValues.postID + "/reactions?limit=1000",
+        function(response) {
+            console.log(response);
+             $.each(response.data, function(){
+if(this.type === "LOVE")
+{rtlove++;} 
+if(this.type === "HAHA") 
+{rthaha++;};
+}
+);
+             console.log("done");
+             if(response.paging.next)
+             {
+             	nextPageResult(response.paging.next);
+             }
+             else
+             {
+             	lastlove = rtlove;
+             	lasthaha = rthaha;
+             	
+             	     $("#lovecount").text(numberWithCommas(rtlove + loveadd));
+                     if($("#lovecount").text().length >= 6)
+                     {
+                        $("#lovecount").css("font-size","80px").css("line-height", "135px");
+                     }
+                $("#hahacount").text(numberWithCommas(rthaha + hahaadd));
+                   if($("#hahacount").text().length >= 6)
+                     {
+                        $("#hahacount").css("font-size","80px").css("line-height", "135px");
+                     }
+                 setTimeout(checkRealtimeVotes, 5000);
+             }
+  
+        });
+return true;
+}
+
+function nextPageResult(theURL){
+
+
+	$.getJSON(theURL, function(response) {
+		 console.log(response);
+             $.each(response.data, function(){
+if(this.type === "LOVE")
+{rtlove++;} 
+if(this.type === "HAHA") 
+{rthaha++;};
+}
 );
 
+ if(response.paging.next)
+             {
+             	nextPageResult(response.paging.next);
+             }
+             else
+             {
+             	    	lastlove = rtlove;
+             	lasthaha = rthaha;
+             	
+
+                     $("#lovecount").text(numberWithCommas(rtlove + loveadd));
+                     if($("#lovecount").text().length >= 6)
+                     {
+                        $("#lovecount").css("font-size","68px").css("line-height", "135px");
+
+                     }
+                $("#hahacount").text(numberWithCommas(rthaha + hahaadd));
+                   if($("#hahacount").text().length >= 6)
+                     {
+                        $("#hahacount").css("font-size","68px").css("line-height", "135px");
+                     }
+                 setTimeout(checkRealtimeVotes, 5000);
+             }
 });
 }
 
-  function checkVotes() {
-    var theCommand = currentValues.pageID+"_"+currentValues.postID+"/insights/post_reactions_by_type_total";
-    var apKey = {};
-    if(backUpMode)
-    {
-      apKey = {access_token: currentValues.UserToken};
-    }
-    FB.api(
-    "941033746006031_1021570764618995/insights/post_reactions_by_type_total", apKey,
-    function (response) { 
-      console.log(response);
-});
 
-  }
+function updateVotes() {
+    var lovetest = rtlove;
+    var hahatest = rthaha;
+    var loveNumber = lovetest.toString().length;
+    var hahaNumber = hahatest.toString().length;
+    if(cycler > 0)
+    {
+        cycler--;
+        $("#lovecount").text(Math.floor(Math.random()*Math.pow(10, loveNumber)));
+        $("#hahacount").text(Math.floor(Math.random()*Math.pow(10, hahaNumber)));
+    }
+    else
+    {
+                $("#lovecount").text(rtlove);
+                $("#hahacount").text(rthaha);
+                clearInterval(newVoteNumber);
+                setTimeout(checkRealtimeVotes, 5000);
+                cycler = 50;
+    }
+}
+
+function mainVoteLoop()
+{
+    if(checkVotes())
+    {
+        if(loveCount != oldlove || hahaCount != oldhaha)
+        {
+        newVoteNumber = setInterval(updateVotes, 33);
+        }
+}
+    else
+    {
+        console.log("-something- is wrong");
+    }
+} 
+
+setInterval( function() {    checkShareVotes(lasthaha, lastlove)}, 15000);
