@@ -6,10 +6,13 @@ var loveCount = 0;
 var hahaCount = 0;
 var oldlove = 0;
 var oldhaha = 0;
+
 var newVoteNumber;
 var cycler = 50;
 
-
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 //This Script will log the User in to Facebook, Once the app has 
 
 // This is called with the results from from FB.getLoginStatus().
@@ -116,34 +119,128 @@ function loadAndCheck() {
 
     });
 
-    setInterval(mainVoteLoop, 5000);
+   // setInterval(mainVoteLoop, 5000);
 }
 
-function checkVotes() {
-    var theCommand = currentValues.pageID + "_" + currentValues.postID + "/insights/post_reactions_by_type_total";
-    var apKey = {};
-    if (backUpMode) {
-        apKey = { access_token: currentValues.UserToken };
-    }
+function checkShareVotes(hahac, lovec) {
     FB.api(
-        currentValues.pageID + "_" + currentValues.postID + "/insights/post_reactions_by_type_total", apKey,
+        currentValues.pageID + "_" + currentValues.postID + "/insights/post_reactions_by_type_total",
         function(response) {
             console.log(response);
             apResults = response;
             oldlove = loveCount;
             oldhaha = hahaCount;
-            loveCount = apResults.data[0].values[0].value.love;
-            hahaCount = apResults.data[0].values[0].value.haha;
+            loveadd = apResults.data[0].values[0].value.love - lovec;
+            hahaadd = apResults.data[0].values[0].value.haha - hahac;
             
+        });
+
+}
+
+
+var hahaadd = 0;
+var loveadd = 0;
+var rthaha = 0;
+var rtlove = 0;
+
+var lastlove = 0;
+var lasthaha = 0;
+
+
+setTimeout(checkRealtimeVotes, 5000);
+
+function checkRealtimeVotes() {
+
+	rthaha = 0;
+	rtlove = 0
+    var theCommand = currentValues.pageID + "_" + currentValues.postID + "/reactions/";
+    var apKey = {};
+    if (backUpMode) {
+        apKey = { access_token: currentValues.UserToken };
+    }
+    FB.api(
+        currentValues.pageID + "_" + currentValues.postID + "/reactions?limit=1000",
+        function(response) {
+            console.log(response);
+             $.each(response.data, function(){
+if(this.type === "LOVE")
+{rtlove++;} 
+if(this.type === "HAHA") 
+{rthaha++;};
+}
+);
+             console.log("done");
+             if(response.paging.next)
+             {
+             	nextPageResult(response.paging.next);
+             }
+             else
+             {
+             	lastlove = rtlove;
+             	lasthaha = rthaha;
+             	
+             	     $("#lovecount").text(numberWithCommas(rtlove + loveadd));
+                     if($("#lovecount").text().length >= 6)
+                     {
+                        $("#lovecount").css("font-size","80px").css("line-height", "135px");
+                     }
+                $("#hahacount").text(numberWithCommas(rthaha + hahaadd));
+                   if($("#hahacount").text().length >= 6)
+                     {
+                        $("#hahacount").css("font-size","80px").css("line-height", "135px");
+                     }
+                 setTimeout(checkRealtimeVotes, 5000);
+             }
+  
         });
 return true;
 }
 
+function nextPageResult(theURL){
+
+
+	$.getJSON(theURL, function(response) {
+		 console.log(response);
+             $.each(response.data, function(){
+if(this.type === "LOVE")
+{rtlove++;} 
+if(this.type === "HAHA") 
+{rthaha++;};
+}
+);
+
+ if(response.paging.next)
+             {
+             	nextPageResult(response.paging.next);
+             }
+             else
+             {
+             	    	lastlove = rtlove;
+             	lasthaha = rthaha;
+             	
+
+                     $("#lovecount").text(numberWithCommas(rtlove + loveadd));
+                     if($("#lovecount").text().length >= 6)
+                     {
+                        $("#lovecount").css("font-size","68px").css("line-height", "135px");
+
+                     }
+                $("#hahacount").text(numberWithCommas(rthaha + hahaadd));
+                   if($("#hahacount").text().length >= 6)
+                     {
+                        $("#hahacount").css("font-size","68px").css("line-height", "135px");
+                     }
+                 setTimeout(checkRealtimeVotes, 5000);
+             }
+});
+}
+
+
 function updateVotes() {
-    var lovetest = loveCount;
-    var hahatest = hahaCount;
+    var lovetest = rtlove;
+    var hahatest = rthaha;
     var loveNumber = lovetest.toString().length;
-    var hahaNumber = hahaCount.toString().length;
+    var hahaNumber = hahatest.toString().length;
     if(cycler > 0)
     {
         cycler--;
@@ -152,9 +249,10 @@ function updateVotes() {
     }
     else
     {
-                $("#lovecount").text(loveCount);
-                $("#hahacount").text(hahaCount);
+                $("#lovecount").text(rtlove);
+                $("#hahacount").text(rthaha);
                 clearInterval(newVoteNumber);
+                setTimeout(checkRealtimeVotes, 5000);
                 cycler = 50;
     }
 }
@@ -172,4 +270,6 @@ function mainVoteLoop()
     {
         console.log("-something- is wrong");
     }
-}
+} 
+
+setInterval( function() {    checkShareVotes(lasthaha, lastlove)}, 15000);
