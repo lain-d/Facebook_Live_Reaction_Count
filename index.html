@@ -3,15 +3,80 @@
 <head>
 <title>Facebook Reaction Voting</title>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="css/page.css">
 </head>
 <body>
+=======
+<style>
+	body{
+		font-family: CgFuturaMaxi;
+		font-weight: bold;
+	}
+	.holder
+	{
+		position: absolute;
+		top:0;
+		left:0;
+		width: 1280px;
+		height:720px;
+	}
+
+	.love{
+   
+    border-radius: 75px 0 0 75px;
+    position: absolute;
+    top: 538px;
+    right: 842px;
+    color: #e9168c;
+    background-color: white;
+    font-size: 68px;
+    line-height: 135px;
+    text-align: right;
+    padding-right: 30px;
+    padding-left: 37px;
+    height:135.556px;
+	}
+	.haha{
+	border-radius: 0 75px 75px 0;	
+	position: absolute;
+    top: 538px;
+	left: 841px;
+	color: #47c422;
+	background-color: white;
+	font-size: 68px;
+	line-height: 135px;
+	text-align: left;
+	padding-left: 30px;
+    padding-right: 37px;
+    height:135.556px;
+	}
+	.bgdiv
+	{
+		display:none;
+		width:1280px;
+		height:720px;
+		background-image:url('bgtest.jpg');
+		z-index: -100;
+		position: absolute;
+		top:0px;
+		left:0px;
+	}
+
+
+</style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="fbvote.js?rr3667765535"></script>
+>>>>>>> origin/master
 <div id="logInStuff">
 <fb:login-button scope="public_profile,email,read_insights" onlogin="checkLoginState();">
 </fb:login-button>
 <div id="status">
 </div>
 </div>
+<<<<<<< HEAD
 <div class="screen">
 	<div class="voteValue" id="like"><span id="liken">0</span><div class="face like"></div></div>
 	<div class="voteValue" id="love"><span id="loven">0</span><div class="face love"></div></div>
@@ -22,5 +87,12 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="js/fbvote.js"></script>
+=======
+<div class="holder">
+<div id="lovecount" class="love">6,100</div>
+<div id="hahacount" class="haha">18,773</div>
+</div>
+<div class="bgdiv"></div>
+>>>>>>> origin/master
 </body>
 </html>
