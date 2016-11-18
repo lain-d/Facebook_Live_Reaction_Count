@@ -83,6 +83,7 @@ var backUpMode = false;
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
         //check if we can get the userToken to work
+   //     $("#logInStuff").hide();
     });
   }
 
