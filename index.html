@@ -6,31 +6,21 @@
 <link rel="stylesheet" type="text/css" href="css/page.css">
 </head>
 <body>
-
 <div id="logInStuff">
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<fb:login-button scope="public_profile,email,read_insights" onlogin="checkLoginState();">
 </fb:login-button>
 <div id="status">
 </div>
 </div>
-
-
-
-
-
-
 <div class="screen">
-	<div class="voteValue" id="like">233111<div class="face like"></div></div>
-	<div class="voteValue" id="love">31112<div class="face love"></div></div>
-	<div class="voteValue" id="haha">32<div class="face haha"></div></div>
-	<div class="voteValue" id="wow">321<div class="face wow"></div></div>
-	<div class="voteValue" id="angry">3123<div class="face angry"></div></div>
-	<div class="voteValue" id="sad">112<div class="face sad"></div></div>
+	<div class="voteValue" id="like"><span id="liken">0</span><div class="face like"></div></div>
+	<div class="voteValue" id="love"><span id="loven">0</span><div class="face love"></div></div>
+	<div class="voteValue" id="haha"><span id="hahan">0</span><div class="face haha"></div></div>
+	<div class="voteValue" id="wow"><span id="wown">0</span><div class="face wow"></div></div>
+	<div class="voteValue" id="angry"><span id="angryn">0</span><div class="face angry"></div></div>
+	<div class="voteValue" id="sad"><span id="sadn">0</span><div class="face sad"></div></div>
 </div>
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="fbvote.js"></script>
+<script src="js/fbvote.js"></script>
 </body>
 </html>

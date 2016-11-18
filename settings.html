@@ -71,34 +71,7 @@ Include Shares?<br>
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-  <script>
-
-  $("#savebutt").click(function(){
-    var douglas = {"pageID": $("#pageIDval").val(), "postID": $("#postIDval").val(), "includeShares": $("#sharecheck")[0].checked};
-
-    $.post("saveit.php", douglas, function(d) {
-    console.log(d);
-    $("#sm").text("Saved!").show().fadeOut(1000);
-   });
-  });   
-
-$( document ).ready(function() {
-   $.getJSON( "values.json", function( data ) {
-    $("#pageIDval").val(data.pageID);
-    $("#postIDval").val(data.postID);
-    if(data.includeShares === "true")
-    {
-      $( "#sharecheck" ).prop( "checked", true );
-    }
-    $(".container").fadeIn(100);
-
-});
-});
-
-
-
-
-  </script>
+  <script src="js\settings.js"></script>
 
 </body>
 </html>
