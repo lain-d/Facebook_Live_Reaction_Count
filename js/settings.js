@@ -7,7 +7,7 @@
   });   
 
 $( document ).ready(function() {
-   $.getJSON( "../values.json", function( data ) {
+   $.getJSON( "./values.json", function( data ) {
     $("#pageIDval").val(data.pageID);
     $("#postIDval").val(data.postID);
     if(data.includeShares === "true")

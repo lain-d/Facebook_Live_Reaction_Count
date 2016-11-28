@@ -3,7 +3,6 @@ var currentValues;
 //our real time and insight reaction data objects
 var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
-
 //This Script will log the User in to Facebook.
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -27,7 +26,6 @@ function statusChangeCallback(response) {
             'into Facebook.';
     }
 }
-
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
@@ -39,6 +37,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
     FB.init({
+        //set your app ID here
         appId: '332002107168006',
         cookie: true, // enable cookies to allow the server to access 
         // the session
@@ -75,26 +74,67 @@ function startApp() {
         //Load the info on the post we want to pull information from and start polling for data
         $.getJSON("values.json?" + Math.random(), function(data) {
             currentValues = data;
-            setTimeout(realTimeReactions, 5000);
-            if (currentValues.includeShares === "true") {
-                insightVoting();
-                setInterval(insightVoting, 300000);
-            }
+
+            if (!currentValues.pageID || !currentValues.postID || currentValues.pageID == 0 || currentValues.postID == 0) {
+                $("#voteSettings").fadeIn(100);
+            } else {
+                    realTimeReactions();
+                    if (currentValues.includeShares === "true") {
+                        insightVoting();
+                        setInterval(insightVoting, 300000);
+                    }
+                else {
+                    $("#voteSettings").fadeIn(100);
+                } }
+            
+        }).fail(function() {
+            $("#voteSettings").fadeIn(100);
         });
     });
 }
 
+$("#savebutt").click(function() {
+    currentValues.pageID = $("#pageIDval").val();
+    currentValues.postID = $("#postIDval").val();
+    FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
+        if (response.error) {
+            console.log("error loading post");
+            console.log("no lload");
+            $("#sm").text("invalid Post/Page ID").show().fadeOut(1500);
+
+        } else {
+
+            $("#voteSettings").fadeOut(10);
+            realTimeReactions();
+            if ($("#sharecheck")[0].checked) {
+                console.log("include insights");
+                insightVoting();
+                setInterval(insightVoting, 300000);
+            }
+        }
+    })
+});
+
+
 //Helper Function To Count the Reactions in the Array
-function voteArrayCounter(data) {
+function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++
     });
+       if (next) {
+                pageLoop(next);
+            } else {
+                applyVotes();
+            }
 }
-
 //Get the Reactions from Insights (this will include Shares). Insights only updates once every 5 Minutes or so.
 function insightVoting() {
     insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/insights/post_reactions_by_type_total', function(response) {
+        if (response.error) {
+            console.log("error loading post");
+            return;
+        }
         insights.LIKE = response.data[0].values[0].value.like;
         insights.LOVE = response.data[0].values[0].value.love;
         insights.WOW = response.data[0].values[0].value.wow;
@@ -103,19 +143,24 @@ function insightVoting() {
         insights.ANGRY = response.data[0].values[0].value.anger;
     });
 }
-
 // Get Reactions from the Reactions API, which is in real time, this only includes reactions on the 
 // original post! Will apply votes once done, or page to the next array.
+
 function realTimeReactions() {
     realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
-        voteArrayCounter(response.data);
-        if (response.paging.next) {
-            pageLoop(response.paging.next);
-        } else {
-            applyVotes();
-        }
+        if (response.error) {
+            console.log("error loading post");
 
+        } else {
+            if(response.data.length < 1)
+            {
+                // will only check reactions once there are some.
+                setTimeout(realTimeReactions, 5000);
+                return;
+            }
+            voteArrayCounter(response.data, response.paging.next);
+         }
     });
 
 }
@@ -124,15 +169,9 @@ function realTimeReactions() {
 //this will loop through the rest of the results and then apply the votes when done.
 function pageLoop(url) {
     $.getJSON(url, function(response) {
-        voteArrayCounter(response.data);
-        if (response.paging.next) {
-            pageLoop(response.paging.next);
-        } else {
-            applyVotes();
-        }
+        voteArrayCounter(response.data, response.paging.next);
     });
 }
-
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
