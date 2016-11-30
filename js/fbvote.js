@@ -110,7 +110,7 @@ function realTimeReactions() {
                 setTimeout(realTimeReactions, 5000);
                 return;
             }
-            voteArrayCounter(response.data, response.paging.next);
+            console.log(voteArrayCounter(response.data, response.paging.next));
         }
     });
 
@@ -123,8 +123,10 @@ function voteArrayCounter(data, next) {
     });
     if (next) {
         pageLoop(next);
+        return "loop";
     } else {
         applyVotes();
+        return "applied";
     }
 }
 
@@ -132,17 +134,17 @@ function voteArrayCounter(data, next) {
 //this will get the next set of results.
 function pageLoop(url) {
     $.getJSON(url, function(response) {
-        voteArrayCounter(response.data, response.paging.next);
+           console.log(voteArrayCounter(response.data, response.paging.next));
     });
 }
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    $("#liken").text(realtimer.LIKE + Math.max(0, (insights.LIKE - realtimer.LIKE)));
-    $("#loven").text(realtimer.LOVE + Math.max(0, (insights.LOVE - realtimer.LOVE)));
-    $("#hahan").text(realtimer.HAHA + Math.max(0, (insights.HAHA - realtimer.HAHA)));
-    $("#wown").text(realtimer.WOW + Math.max(0, (insights.WOW - realtimer.WOW)));
-    $("#sadn").text(realtimer.SAD + Math.max(0, (insights.SAD - realtimer.SAD)));
-    $("#angryn").text(realtimer.ANGRY + Math.max(0, (insights.ANGRY - realtimer.ANGRY)));
+    $("#liken").text(realtimer.LIKE);
+    $("#loven").text(realtimer.LOVE);
+    $("#hahan").text(realtimer.HAHA);
+    $("#wown").text(realtimer.WOW);
+    $("#sadn").text(realtimer.SAD);
+    $("#angryn").text(realtimer.ANGRY);
     setTimeout(realTimeReactions, 5000);
 }
