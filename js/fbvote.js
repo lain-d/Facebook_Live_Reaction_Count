@@ -1,3 +1,5 @@
+var appID = "372358933100350";
+
 //values will include the pageID, postID
 var currentValues = {"pageID": "", "postID": ""};
 //our real time and insight reaction data objects
@@ -38,7 +40,7 @@ function checkLoginState() {
 window.fbAsyncInit = function() {
     FB.init({
         //set your app ID here
-        appId: '372358933100350',
+        appId: appID,
         cookie: true, // enable cookies to allow the server to access 
         // the session
         xfbml: true, // parse social plugins on this page
