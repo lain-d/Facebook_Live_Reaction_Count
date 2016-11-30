@@ -1,5 +1,5 @@
 //values will include the pageID, postID
-var currentValues;
+var currentValues = {"pageID": "", "postID": ""};
 //our real time and insight reaction data objects
 var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };

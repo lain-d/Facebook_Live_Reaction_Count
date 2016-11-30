@@ -76,33 +76,33 @@ input{
 }
 #like{
 position: absolute;
-top: 300px;
-left: 350px;
+top: 100px;
+left: 200px;
 }
 #love{
 	position: absolute;
-	top: 300px;
-	left: 450px;
+	top: 100px;
+	left: 650px;
 }
 #haha{
 	position: absolute;
-	top: 300px;
-	left: 550px;
+	top: 100px;
+	left: 1080px;
 }
 #wow{
 	position: absolute;
-	top: 300px;
-	left: 650px;
+	top: 400px;
+	left: 200px;
 }
 #sad{
 	position: absolute;
-	top: 300px;
-	left: 750px;
+	top: 400px;
+	left: 650px;
 }
 #angry{
 	position: absolute;
-	top: 300px;
-	left: 850px;
+	top: 400px;
+	left: 1080px;
 }
 .face
 {
