@@ -1,5 +1,4 @@
 var appID = "372358933100350";
-
 //values will include the pageID, postID
 var currentValues = {"pageID": "", "postID": ""};
 //our real time and insight reaction data objects
