@@ -1,7 +1,7 @@
 # Facebook_Reaction_Voting
 
 
-This is a simples Javascript based Facebook Live voting tool you can use to drive live interactions with your facebook content.
+This is a Javascript based Facebook Live voting tool you can use to drive live interactions with your facebook content.
 
 This will count the votes on any public live video post
 
