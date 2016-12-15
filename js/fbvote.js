@@ -1,6 +1,6 @@
 var appID = "372358933100350";
 //values will include the pageID, postID
-var currentValues = {"pageID": "", "postID": ""};
+var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
 var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
@@ -71,49 +71,52 @@ function startApp() {
     });
 }
 
+$('#postIDval').keypress(function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        event.preventDefault;
+        $("#savebutt").click();
+        return false; //<---- Add this line
+    }
+});
+
 //Saves the post settings and runs callback to start up the live vote monitoring. 
 $("#savebutt").click(function() {
     currentValues.pageID = $("#pageIDval").val();
     currentValues.postID = $("#postIDval").val();
-    if(isNaN(currentValues.pageID))
-    {
-         FB.api(currentValues.pageID, function(response) {
-            if(response.error)
-            {
-                 $("#sm").text("Invalid Page Name").show().fadeOut(2000);
-                 return;
-            }
-            else
-            {
+    if (isNaN(currentValues.pageID)) {
+        FB.api(currentValues.pageID, function(response) {
+            if (response.error) {
+                $("#sm").text("Invalid Page Name").show().fadeOut(2000);
+                return;
+            } else {
                 currentValues.pageID = response.id;
-                validatePost();
+                $("#voteSettings").fadeOut(10);
+                setTimeout(validatePost, 20000);
             }
 
-         });
-    }
-    else
-    {
-        validatePost();
+        });
+    } else {
+        $("#voteSettings").fadeOut(10);
+        setTimeout(validatePost, 20000);
     }
 
 });
 
 //callback function to validate the post and 
 function validatePost() {
-        FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
+    FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
         if (response.error) {
             console.log("error loading post");
-            console.log("no lload");
-            $("#sm").text("invalid Post/Page ID").show().fadeOut(2000);
+            console.log("no load");
+            $("#voteSettings").show();
+            $("#sm").text("invalid Post ID").show().fadeOut(5000);
 
         } else {
-            $("#voteSettings").fadeOut(10);
             realTimeReactions();
         }
     });
 }
-
-
 
 // Get Reactions from the Reactions API, which is in real time, this only includes reactions on the 
 // original post! Will apply votes once done, or page to the next array. See Development Branch to get Reaction Votes!
@@ -155,7 +158,7 @@ function voteArrayCounter(data, next) {
 //this will get the next set of results.
 function pageLoop(url) {
     $.getJSON(url, function(response) {
-           voteArrayCounter(response.data, response.paging.next);
+        voteArrayCounter(response.data, response.paging.next);
     });
 }
 //This will apply the vote values to the display. If you aren't counting a reaction,
