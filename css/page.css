@@ -10,6 +10,7 @@
 
 .voteValue {
     font-family: helvetica, sans-serif;
+    width:150px;
     font-size: 50px;
     font-weight: bold;
     background-color: none;
@@ -22,13 +23,13 @@
 #like {
     position: absolute;
     top: 605px;
-    left: 947px;
+    left: 887px;
 }
 
 #love {
     position: absolute;
     top: 605px;
-    left: 298px;
+    left: 238px;
 }
 
 #haha {
