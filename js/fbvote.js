@@ -151,11 +151,11 @@ function voteArrayCounter(data, next) {
         realtimer[v.type]++;
         if(v.type == "LIKE" && realtimer["LIKE"] > oldlikes)
         {
-            setTimeout(function(){animatevote("like", 872, 1037);}, getRandomInt(50, 1000));
+            setTimeout(function(){animatevote("like", 872, 1037);}, getRandomInt(50, 2500));
         }
         if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
         {
-             setTimeout(function(){animatevote("love", 229, 393);}, getRandomInt(50, 1000));
+             setTimeout(function(){animatevote("love", 229, 393);}, getRandomInt(50, 2500));
         }
     });
     if (next) {
