@@ -14,7 +14,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image:url('votefg.png') 
+    background-image:url('votefg.png');
+    z-index: 1000;
 }
 
 .particle
@@ -22,7 +23,7 @@
     width: 25px;
     height: 25px;
     position: absolute;
-
+    z-index: 999;
 }
 
 .voteValue {
@@ -35,6 +36,7 @@
     text-align: center;
     padding: 10px;
     border-radius: 50px;
+    z-index: 1001;
 }
 
 #like {
