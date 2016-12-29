@@ -8,6 +8,14 @@
     background-image:url('votebg.jpg') 
 }
 
+.particle
+{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    
+}
+
 .voteValue {
     font-family: helvetica, sans-serif;
     width:150px;
@@ -23,13 +31,13 @@
 #like {
     position: absolute;
     top: 605px;
-    left: 887px;
+    left: 885px;
 }
 
 #love {
     position: absolute;
     top: 605px;
-    left: 238px;
+    left: 240px;
 }
 
 #haha {
