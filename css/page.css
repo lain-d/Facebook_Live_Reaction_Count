@@ -5,29 +5,56 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image: url('bgimg.jpg');
+    background-image:url('bgimg2.jpg') 
+}
+
+.valueboxes {
+    width: 1280px;
+    height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image:url('frontboxes.png');
+    z-index: 1000;
+}
+
+.particle
+{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    z-index: 999;
+}
+
+.particle img
+{
+        width: 35px;
+    height: 35px;
 }
 
 .voteValue {
     font-family: helvetica, sans-serif;
+    width:150px;
     font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color:white;
+    color: white;
+    text-align: center;
     padding: 10px;
     border-radius: 50px;
+    z-index: 1001;
 }
 
 #like {
     position: absolute;
-    top: 645px;
-    left: 290px;
+    top: 610px;
+    left: 235px;
 }
 
 #love {
     position: absolute;
-    top: 645px;
-    left: 940px;
+    top: 610px;
+    left: 878px;
 }
 
 #haha {

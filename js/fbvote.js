@@ -4,6 +4,11 @@ var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
 var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
+var oldloves = 0;
+var oldlikes = 0;
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 //This Script will log the User in to Facebook.
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -143,12 +148,21 @@ function realTimeReactions() {
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
-        realtimer[v.type]++
+        realtimer[v.type]++;
+        if(v.type == "LIKE" && realtimer["LIKE"] > oldlikes)
+        {
+            setTimeout(function(){animatevote("like", 233, 404);}, getRandomInt(50, 2500));
+        }
+        if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
+        {
+             setTimeout(function(){animatevote("love", 868, 1009);}, getRandomInt(50, 2500));
+        }
     });
     if (next) {
         pageLoop(next);
         return "loop";
     } else {
+
         applyVotes();
         return "applied";
     }
@@ -164,6 +178,8 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
+    oldlikes = realtimer.LIKE;
+    oldloves = realtimer.LOVE;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);
     $("#hahan").text(realtimer.HAHA);
@@ -171,4 +187,15 @@ function applyVotes() {
     $("#sadn").text(realtimer.SAD);
     $("#angryn").text(realtimer.ANGRY);
     setTimeout(realTimeReactions, 5000);
+}
+
+//This will animate a little duder whenever a vote is counted (optional)
+function animatevote(type, place1, place2)
+{
+    var times =  Math.random()*1000+500;
+    var dodo = "div"+Math.floor(Math.random()*100000);
+    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
+    $("#"+dodo).css({"top":"600px", "left":getRandomInt(place1, place2)+"px"});
+    $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
+    setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
 }
