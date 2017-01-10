@@ -5,7 +5,17 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('bgimg2.jpg') 
+    background-image:url('lhhnyforeground.png');
+}
+
+video
+{
+    width: 1280px;
+    height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
 }
 
 .valueboxes {
@@ -47,13 +57,13 @@
 
 #like {
     position: absolute;
-    top: 610px;
+    top: 645px;
     left: 235px;
 }
 
 #love {
     position: absolute;
-    top: 610px;
+    top: 645px;
     left: 878px;
 }
 
