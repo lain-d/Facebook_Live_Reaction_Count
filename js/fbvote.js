@@ -122,7 +122,6 @@ function validatePost() {
         }
     });
 }
-
 // Get Reactions from the Reactions API, which is in real time, this only includes reactions on the 
 // original post! Will apply votes once done, or page to the next array. See Development Branch to get Reaction Votes!
 
