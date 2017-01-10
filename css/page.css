@@ -51,6 +51,7 @@
    margin-bottom: 22px;
    height: 122px;
    line-height: 150px;
+    z-index: 1002;
 }
 
 #like {

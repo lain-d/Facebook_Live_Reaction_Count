@@ -149,13 +149,14 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if(v.type == "LIKE" && realtimer["LIKE"] > oldlikes)
+        if(v.type == "HAHA" && realtimer["HAHA"] > oldlikes)
         {
-            setTimeout(function(){animatevote("like", 233, 404);}, getRandomInt(50, 2500));
+            console.log("haha");
+            setTimeout(function(){animatevote("haha", 748, 935);}, getRandomInt(50, 2500));
         }
         if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
         {
-             setTimeout(function(){animatevote("love", 868, 1009);}, getRandomInt(50, 2500));
+             setTimeout(function(){animatevote("love", 308, 495);}, getRandomInt(50, 2500));
         }
     });
     if (next) {
@@ -178,7 +179,7 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    oldlikes = realtimer.LIKE;
+    oldlikes = realtimer.HAHA;
     oldloves = realtimer.LOVE;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);
@@ -194,7 +195,7 @@ function animatevote(type, place1, place2)
 {
     var times =  Math.random()*1000+500;
     var dodo = "div"+Math.floor(Math.random()*100000);
-    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
+    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+".gif'></div>");
     $("#"+dodo).css({"top":"600px", "left":getRandomInt(place1, place2)+"px"});
     $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
     setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
