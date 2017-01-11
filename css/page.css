@@ -8,7 +8,29 @@
     background-image:url('background.png');
     background-color: #EEE;
 }
-
+.tugofwarbar
+{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+#sidea
+{
+    background-color: red;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+}
+#sideb
+{
+    background-color: blue;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+}
 
 /* this is if you want a foreground image */
 .valueboxes {
@@ -38,7 +60,7 @@
 
 .voteValue {
     font-family: helvetica, sans-serif;
-    width:150px;
+    min-width:150px;
     font-size: 50px;
     font-weight: bold;
     background-color: white;

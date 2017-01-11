@@ -182,6 +182,14 @@ function applyVotes() {
     $("#wown").text(realtimer.WOW);
     $("#sadn").text(realtimer.SAD);
     $("#angryn").text(realtimer.ANGRY);
+    if($(".tugofwarbar").is(':visible'))
+    {
+        var total = realtimer.LOVE + realtimer.HAHA;
+        $("#sidea").animate({ width: (realtimer.LOVE/total)*100+"%" }, { duration: 500, queue: false });
+        $("#sideb").animate({ width: (realtimer.HAHA/total)*100+"%" }, { duration: 500, queue: false });
+        $("#sidea").text((realtimer.LOVE/total)*100+"%");
+        $("#sideb").text((realtimer.HAHA/total)*100+"%");
+    }
     setTimeout(realTimeReactions, 5000);
 }
 
