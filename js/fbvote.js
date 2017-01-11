@@ -3,7 +3,7 @@ var appID = "372358933100350";
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
 var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
-var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
+var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var oldloves = 0;
 var oldlikes = 0;
 function getRandomInt(min, max) {
@@ -149,14 +149,11 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if(v.type == "LIKE" && realtimer["LIKE"] > oldlikes)
+        if(realtimer[v.type] > oldvotes[v.type])
         {
-            setTimeout(function(){animatevote("like", 25, 600);}, getRandomInt(50, 2500));
+            setTimeout(function(){animatevote(v.type);}, getRandomInt(50, 2500));
         }
-        if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
-        {
-             setTimeout(function(){animatevote("love", 700, 1209);}, getRandomInt(50, 2500));
-        }
+
     });
     if (next) {
         pageLoop(next);
@@ -178,8 +175,7 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    oldlikes = realtimer.LIKE;
-    oldloves = realtimer.LOVE;
+    oldvotes = realtimer;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);
     $("#hahan").text(realtimer.HAHA);
@@ -190,12 +186,13 @@ function applyVotes() {
 }
 
 //This will animate a little duder whenever a vote is counted (optional)
-function animatevote(type, place1, place2)
+function animatevote(type)
 {
+    type = type.toLowerCase();
     var times =  Math.random()*1000+500;
     var dodo = "div"+Math.floor(Math.random()*100000);
-    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
-    $("#"+dodo).css({"top":"600px", "left":getRandomInt(place1, place2)+"px"});
-    $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
-    setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
+    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/bubbles/"+type+".png'></div>");
+    $("#"+dodo).css({"top": $("#"+type).css("top"), "left":getRandomInt(parseInt($("#"+type).css("left")), parseInt($("#"+type).css("left"))+parseInt($("#"+type).css("width")))+"px"});
+    $("#"+dodo).animate({ top: parseInt($("#"+type).css("top"))-200-(Math.random()*200)}, { duration: times, queue: false });
+     setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
 }
