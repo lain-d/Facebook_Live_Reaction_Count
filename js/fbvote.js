@@ -187,8 +187,8 @@ function applyVotes() {
         var total = realtimer.LOVE + realtimer.HAHA;
         $("#sidea").animate({ width: (realtimer.LOVE/total)*100+"%" }, { duration: 500, queue: false });
         $("#sideb").animate({ width: (realtimer.HAHA/total)*100+"%" }, { duration: 500, queue: false });
-        $("#sidea").text((realtimer.LOVE/total)*100+"%");
-        $("#sideb").text((realtimer.HAHA/total)*100+"%");
+        $("#sidea").text(Math.ceil((realtimer.LOVE/total)*100)+"%");
+        $("#sideb").text(Math.ceil((realtimer.HAHA/total)*100)+"%");
     }
     setTimeout(realTimeReactions, 5000);
 }
