@@ -149,7 +149,7 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if(realtimer[v.type] > oldvotes[v.type])
+        if(realtimer[v.type] > oldvotes[v.type] && $("#"+(v.type).toLowerCase()).is(':visible'))
         {
             setTimeout(function(){animatevote(v.type);}, getRandomInt(50, 2500));
         }
