@@ -8,9 +8,36 @@
     background-image:url('background.png');
     background-color: #EEE;
 }
+.winscreeen
+{
+     width: 1280px;
+    height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    display: none;
+    color: white;
+    z-index: 100000000000000000;
+}
+
+.countdown
+{
+     font-family: helvetica, sans-serif;
+     position: absolute;
+     top: 100px;
+     left: 1050px;
+    color: blue;
+    font-size: 50px;
+
+
+}
+
+
 .tugofwarbar
 {
         font-family: helvetica, sans-serif;
+        overflow: hidden;
     width: 100%;
     height: 100px;
     position: absolute;
@@ -23,6 +50,7 @@
 #sidea
 {
     background-color: red;
+     overflow: hidden;
     width: 50%;
     height: 100%;
     display: inline-block;
@@ -30,6 +58,7 @@
 #sideb
 {
     background-color: blue;
+     overflow: hidden;
     width: 50%;
     height: 100%;
     display: inline-block;
@@ -90,28 +119,28 @@
     position: absolute;
     top: 200px;
     left: 1080px;
-    
+
 }
 
 #wow {
     position: absolute;
     top: 400px;
     left: 200px;
-    
+
 }
 
 #sad {
     position: absolute;
     top: 400px;
     left: 650px;
-    
+
 }
 
 #angry {
     position: absolute;
     top: 400px;
     left: 1080px;
-    
+
 }
 
 .face {
@@ -121,37 +150,37 @@
     background-size: cover;
     display: inline-block;
     margin-top: 5px;
-    
+
 }
 
 .like {
     background-image: url('../images/like.png');
-    
+
 }
 
 .love {
     background-image: url('../images/love.png');
-    
+
 }
 
 .haha {
     background-image: url('../images/haha.png');
-    
+
 }
 
 .wow {
     background-image: url('../images/wow.png');
-    
+
 }
 
 .angry {
     background-image: url('../images/angry.png');
-    
+
 }
 
 .sad {
     background-image: url('../images/sad.png');
-    
+
 }
 
 /* you probably don't have to mess with this stuff */

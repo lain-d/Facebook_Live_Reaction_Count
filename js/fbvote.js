@@ -6,9 +6,24 @@ var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 
 var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var oldloves = 0;
 var oldlikes = 0;
+var timemer = 3600;
+
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
+$("#countdown").text(timemer.toString().toHHMMSS());
 //This Script will log the User in to Facebook.
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -136,9 +151,10 @@ function realTimeReactions() {
         } else {
             if (response.data.length < 1) {
                 // will only check reactions once there are some.
-                setTimeout(realTimeReactions, 5000);
+                setTimeout(realTimeReactions, 2500);
                 return;
             }
+            setTimeout(thecountdown, 1000);
             voteArrayCounter(response.data, response.paging.next);
         }
     });
@@ -149,9 +165,8 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if(realtimer[v.type] > oldvotes[v.type] && $("#"+(v.type).toLowerCase()).is(':visible'))
-        {
-            setTimeout(function(){animatevote(v.type);}, getRandomInt(50, 2500));
+        if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
+            setTimeout(function() { animatevote(v.type); }, getRandomInt(50, 2500));
         }
 
     });
@@ -182,25 +197,45 @@ function applyVotes() {
     $("#wown").text(realtimer.WOW);
     $("#sadn").text(realtimer.SAD);
     $("#angryn").text(realtimer.ANGRY);
-    if($(".tugofwarbar").is(':visible'))
-    {
-        var total = realtimer.LOVE + realtimer.HAHA;
-        $("#sidea").animate({ width: (realtimer.LOVE/total)*100+"%" }, { duration: 500, queue: false });
-        $("#sideb").animate({ width: (realtimer.HAHA/total)*100+"%" }, { duration: 500, queue: false });
-        $("#sidea").text(Math.ceil((realtimer.LOVE/total)*100)+"%");
-        $("#sideb").text(Math.ceil((realtimer.HAHA/total)*100)+"%");
+    if ($(".tugofwarbar").is(':visible')) {
+        var total = realtimer.LOVE + realtimer.LIKE;
+        $("#sidea").animate({ width: (realtimer.LOVE / total) * 100 + "%" }, { duration: 500, queue: false });
+        $("#sideb").animate({ width: (realtimer.LIKE / total) * 100 + "%" }, { duration: 500, queue: false });
+        $("#sidea").text(Math.ceil((realtimer.LOVE / total) * 100) + "%");
+        $("#sideb").text(Math.ceil((realtimer.LIKE / total) * 100) + "%");
     }
-    setTimeout(realTimeReactions, 5000);
+    setTimeout(realTimeReactions, 2000);
 }
 
 //This will animate a little duder whenever a vote is counted (optional)
-function animatevote(type)
-{
+function animatevote(type) {
     type = type.toLowerCase();
-    var times =  Math.random()*1000+500;
-    var dodo = "div"+Math.floor(Math.random()*100000);
-    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/bubbles/"+type+".png'></div>");
-    $("#"+dodo).css({"top": $("#"+type).css("top"), "left":getRandomInt(parseInt($("#"+type).css("left")), parseInt($("#"+type).css("left"))+parseInt($("#"+type).css("width")))+"px"});
-    $("#"+dodo).animate({ top: parseInt($("#"+type).css("top"))-200-(Math.random()*200)}, { duration: times, queue: false });
-     setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
+    var times = Math.random() * 1000 + 500;
+    var dodo = "div" + Math.floor(Math.random() * 100000);
+    $(".screen").append("<div class='particle' id='" + dodo + "'><img src='images/bubbles/" + type + ".png'></div>");
+    $("#" + dodo).css({ "top": $("#" + type).css("top"), "left": getRandomInt(parseInt($("#" + type).css("left")), parseInt($("#" + type).css("left")) + parseInt($("#" + type).css("width"))) + "px" });
+    $("#" + dodo).animate({ top: parseInt($("#" + type).css("top")) - 200 - (Math.random() * 200) }, { duration: times, queue: false });
+    setTimeout(function() { $("#" + dodo).animate({ opacity: 0 }, { duration: 200, queue: false, complete: function() { $("#" + dodo).remove(); } }); }, times - 200);
 }
+
+function thecountdown()
+{
+    timemer--;
+    $("#countdown").text(timemer.toString().toHHMMSS());
+    if(timemer === 0)
+    {
+        if(realtimer.LIKE > realtimer.LOVE)
+        {
+            $("#winnera").fadeIn();
+        }
+        else
+        {
+            $("#winnerb").fadeIn();
+        }
+    }
+    else
+    {
+        setTimeout(thecountdown, 1000);
+    }
+}
+
