@@ -154,7 +154,7 @@ function realTimeReactions() {
                 setTimeout(realTimeReactions, 2500);
                 return;
             }
-            setTimeout(thecountdown, 1000);
+            thecountdown();
             voteArrayCounter(response.data, response.paging.next);
         }
     });
