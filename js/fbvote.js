@@ -133,6 +133,7 @@ function validatePost() {
             $("#sm").text("invalid Post ID").show().fadeOut(5000);
 
         } else {
+                thecountdown();
             realTimeReactions();
         }
     });
@@ -154,7 +155,7 @@ function realTimeReactions() {
                 setTimeout(realTimeReactions, 2500);
                 return;
             }
-            thecountdown();
+        
             voteArrayCounter(response.data, response.paging.next);
         }
     });
