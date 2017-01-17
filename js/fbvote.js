@@ -205,7 +205,7 @@ function applyVotes() {
 
 
 //Tug of War Function
-function tugofwar(sidea, sideb) {
+function tugofwar(sideb, sidea) {
     var total = sidea + sideb;
     $("#sidea").animate({ width: (sidea / total) * 100 + "%" }, { duration: 500, queue: false });
     $("#sideb").animate({ width: (sideb / total) * 100 + "%" }, { duration: 500, queue: false });
