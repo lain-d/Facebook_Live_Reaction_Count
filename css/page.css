@@ -53,11 +53,13 @@
      overflow: hidden;
     width: 50%;
     height: 100%;
+    background-image: url('sidea.gif');
     display: inline-block;
 }
 #sideb
 {
     background-color: blue;
+        background-image: url('sideb.gif');
      overflow: hidden;
     width: 50%;
     height: 100%;
@@ -105,20 +107,21 @@
 
 #like {
     position: absolute;
-    top: 200px;
-    left: 200px;
+    top: 350px;
+    left: 350px;
 }
 
 #love {
     position: absolute;
-    top: 200px;
-    left: 650px;
+    top: 350px;
+    left: 850px;
 }
 
 #haha {
     position: absolute;
     top: 200px;
     left: 1080px;
+    display: none;
 
 }
 
@@ -126,6 +129,7 @@
     position: absolute;
     top: 400px;
     left: 200px;
+    display: none;
 
 }
 
@@ -133,6 +137,7 @@
     position: absolute;
     top: 400px;
     left: 650px;
+    display: none;
 
 }
 
@@ -140,6 +145,7 @@
     position: absolute;
     top: 400px;
     left: 1080px;
+    display: none;
 
 }
 

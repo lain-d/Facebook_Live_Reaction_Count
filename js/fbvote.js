@@ -6,22 +6,21 @@ var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 
 var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var oldloves = 0;
 var oldlikes = 0;
-var timemer = 3600;
-
+var timemer = 180;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-String.prototype.toHHMMSS = function () {
+String.prototype.toHHMMSS = function() {
     var sec_num = parseInt(this, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
+    var hours = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return hours+':'+minutes+':'+seconds;
+    if (hours < 10) { hours = "0" + hours; }
+    if (minutes < 10) { minutes = "0" + minutes; }
+    if (seconds < 10) { seconds = "0" + seconds; }
+    return hours + ':' + minutes + ':' + seconds;
 }
 $("#countdown").text(timemer.toString().toHHMMSS());
 //This Script will log the User in to Facebook.
@@ -133,7 +132,7 @@ function validatePost() {
             $("#sm").text("invalid Post ID").show().fadeOut(5000);
 
         } else {
-                thecountdown();
+            thecountdown();
             realTimeReactions();
         }
     });
@@ -155,7 +154,7 @@ function realTimeReactions() {
                 setTimeout(realTimeReactions, 2500);
                 return;
             }
-        
+
             voteArrayCounter(response.data, response.paging.next);
         }
     });
@@ -199,13 +198,19 @@ function applyVotes() {
     $("#sadn").text(realtimer.SAD);
     $("#angryn").text(realtimer.ANGRY);
     if ($(".tugofwarbar").is(':visible')) {
-        var total = realtimer.LOVE + realtimer.LIKE;
-        $("#sidea").animate({ width: (realtimer.LOVE / total) * 100 + "%" }, { duration: 500, queue: false });
-        $("#sideb").animate({ width: (realtimer.LIKE / total) * 100 + "%" }, { duration: 500, queue: false });
-        $("#sidea").text(Math.ceil((realtimer.LOVE / total) * 100) + "%");
-        $("#sideb").text(Math.ceil((realtimer.LIKE / total) * 100) + "%");
+        tugofwar(realtimer.LOVE, realtimer.LIKE);
     }
     setTimeout(realTimeReactions, 2000);
+}
+
+
+//Tug of War Function
+function tugofwar(sidea, sideb) {
+    var total = sidea + sideb;
+    $("#sidea").animate({ width: (sidea / total) * 100 + "%" }, { duration: 500, queue: false });
+    $("#sideb").animate({ width: (sideb / total) * 100 + "%" }, { duration: 500, queue: false });
+    $("#sidea").text(Math.ceil((sidea / total) * 100) + "%");
+    $("#sideb").text(Math.ceil((sideb / total) * 100) + "%");
 }
 
 //This will animate a little duder whenever a vote is counted (optional)
@@ -219,24 +224,16 @@ function animatevote(type) {
     setTimeout(function() { $("#" + dodo).animate({ opacity: 0 }, { duration: 200, queue: false, complete: function() { $("#" + dodo).remove(); } }); }, times - 200);
 }
 
-function thecountdown()
-{
+function thecountdown() {
     timemer--;
     $("#countdown").text(timemer.toString().toHHMMSS());
-    if(timemer === 0)
-    {
-        if(realtimer.LIKE > realtimer.LOVE)
-        {
+    if (timemer === 0) {
+        if (realtimer.LIKE > realtimer.LOVE) {
             $("#winnera").fadeIn();
-        }
-        else
-        {
+        } else {
             $("#winnerb").fadeIn();
         }
-    }
-    else
-    {
+    } else {
         setTimeout(thecountdown, 1000);
     }
 }
-
