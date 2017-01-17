@@ -53,17 +53,27 @@
      overflow: hidden;
     width: 50%;
     height: 100%;
-    background-image: url('sidea.gif');
+
     display: inline-block;
 }
 #sideb
 {
     background-color: blue;
-        background-image: url('sideb.gif');
+
      overflow: hidden;
     width: 50%;
     height: 100%;
     display: inline-block;
+}
+
+#winnera
+{
+       background-image: url('sidea.gif');
+}
+
+#winnerb
+{
+           background-image: url('sideb.gif');
 }
 
 /* this is if you want a foreground image */
