@@ -1,3 +1,14 @@
+@font-face {
+    font-family: atb;
+    src: url('avg.ttf');
+}
+
+body
+{
+    font-family: atb;
+}
+
+
 .screen {
     width: 1280px;
     height: 720px;
@@ -43,12 +54,12 @@ video
 }
 
 .voteValue {
-    font-family: helvetica, sans-serif;
-    width:150px;
-    font-size: 50px;
+    font-family: atb;
+    width:155px;
+    font-size: 35px;
     font-weight: bold;
     background-color: none;
-    color: white;
+    color: black;
     text-align: center;
     padding: 10px;
     border-radius: 50px;
@@ -57,14 +68,14 @@ video
 
 #like {
     position: absolute;
-    top: 645px;
-    left: 235px;
+    top: 555px;
+    left: 417px;
 }
 
 #love {
     position: absolute;
-    top: 645px;
-    left: 878px;
+    top: 555px;
+    left: 770px;
 }
 
 #haha {
