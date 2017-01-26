@@ -204,14 +204,14 @@ function pageLoop(url) {
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
     oldvotes = realtimer;
-    $("#liken").text(realtimer.LIKE);
-    $("#loven").text(realtimer.LOVE);
-    $("#hahan").text(realtimer.HAHA);
-    $("#wown").text(realtimer.WOW);
-    $("#sadn").text(realtimer.SAD);
-    $("#angryn").text(realtimer.ANGRY);
+    $("#liken").text(realtimer[0]);
+    $("#loven").text(realtimer[1]);
+    $("#hahan").text(realtimer[2]);
+    $("#wown").text(realtimer[3]);
+    $("#sadn").text(realtimer[4]);
+    $("#angryn").text(realtimer[5]);
     if ($(".tugofwarbar").is(':visible')) {
-        tugofwar(realtimer.LOVE, realtimer.LIKE);
+        tugofwar(realtimer[0], realtimer[1]);
     }
     setTimeout(realTimeReactions, 2000);
 }
