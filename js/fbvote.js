@@ -203,7 +203,8 @@ function applyVotes() {
     oldvotes = realtimer;
     var pointer = 0;
     $.each(realtimer, function(k, v){
-        $("choice"+pointer).text(v);
+        console.log("adding for " + k +" the value is " + v + "applying to #choice" + pointer);
+        $("#choice"+pointer).text(v);
         pointer++;
     });
   
