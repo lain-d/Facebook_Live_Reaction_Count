@@ -204,15 +204,15 @@ function pageLoop(url) {
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
     oldvotes = realtimer;
-    $("#liken").text(realtimer[0]);
-    $("#loven").text(realtimer[1]);
-    $("#hahan").text(realtimer[2]);
-    $("#wown").text(realtimer[3]);
-    $("#sadn").text(realtimer[4]);
-    $("#angryn").text(realtimer[5]);
-    if ($(".tugofwarbar").is(':visible')) {
-        tugofwar(realtimer[0], realtimer[1]);
-    }
+    var pointer = 0;
+    $.each(realtimer, function(k, v){
+        $("choice"+pointer).text(realtimer[0]);
+        pointer++;
+    });
+  
+  //  if ($(".tugofwarbar").is(':visible')) {
+    //    tugofwar(realtimer[0], realtimer[1]);
+   // }
     setTimeout(realTimeReactions, 2000);
 }
 
