@@ -1,9 +1,9 @@
 var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
-//set these names as the vote values (maybe make a settings thing later, duh)
+//our real time and insight reaction data objects
 var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
-var oldvotes = realtimer;
+var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var oldloves = 0;
 var oldlikes = 0;
 var timemer = 180;
@@ -143,7 +143,7 @@ function validatePost() {
 // original post! Will apply votes once done, or page to the next array. See Development Branch to get Reaction Votes!
 
 function realTimeReactions() {
-    $.each(realtimer, function(i, v) { realtimer[i] = 0 });
+    $.each(realtimer, function(i, v){realtimer[i]=0});
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=1000', function(response) {
         if (response.error) {
             console.log("error loading post");
@@ -164,20 +164,23 @@ function realTimeReactions() {
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
-        $.each(realtimer, function(a, b) {
-            if (v.message.includes(a)) {
+        $.each(realtimer, function(a, b){
+            if(v.message.includes(a))
+            {
                 realtimer[a]++;
                 console.log("added");
-            } else {
+            }
+            else
+            {
                 console.log("didn't include" + a)
             }
 
         });
-
-        //   realtimer[v.type]++;
-        //  if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
+        
+    //   realtimer[v.type]++;
+      //  if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
         //    setTimeout(function() { animatevote(v.type); }, getRandomInt(50, 2500));
-        // }
+       // }
 
     });
     if (next) {
