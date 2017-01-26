@@ -218,8 +218,8 @@ function applyVotes() {
     $("#loven").text(realtimer[1]);
     $("#hahan").text(realtimer[2]);
     $("#wown").text(realtimer[3]);
-    $("#sadn").text(realtimer.[4]);
-    $("#angryn").text(realtimer.[5]);
+    $("#sadn").text(realtimer[4]);
+    $("#angryn").text(realtimer[5]);
     if ($(".tugofwarbar").is(':visible')) {
         tugofwar(realtimer[0], realtimer[1]);
     }
