@@ -208,9 +208,9 @@ function applyVotes() {
         pointer++;
     });
   
-  //  if ($(".tugofwarbar").is(':visible')) {
-    //    tugofwar(realtimer[0], realtimer[1]);
-   // }
+   if ($(".tugofwarbar").is(':visible')) {
+   tugofwar(parseInt($("#choice1").text()), parseInt($("#choice2").text()));
+   }
     setTimeout(realTimeReactions, 2000);
 }
 
