@@ -89,11 +89,13 @@ window.fbAsyncInit = function() {
 
 //Once Logged in Start up The Voting App
 function startApp() {
+	console.log("loadingup");
     //Check to make sure the person gave credentials.
     FB.api('/me', function(response) {
         document.getElementById('status').innerHTML =
             'Thanks for logging in, ' + response.name + '!';
         //check if we can get the userToken to work
+        console.log("loadingup2");
         $("#logInStuff").fadeOut(200);
         $("#voteSettings").fadeIn(250);
     });

@@ -82,6 +82,7 @@ window.fbAsyncInit = function() {
 function startApp() {
     //Check to make sure the person gave credentials.
     FB.api('/me', function(response) {
+        console.log("checking me");
         document.getElementById('status').innerHTML =
             'Thanks for logging in, ' + response.name + '!';
         //check if we can get the userToken to work
