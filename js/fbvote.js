@@ -168,12 +168,9 @@ function voteArrayCounter(data, next) {
             if(v.message.includes(a))
             {
                 realtimer[a]++;
-                console.log("added");
+              
             }
-            else
-            {
-                console.log("didn't include" + a)
-            }
+
 
         });
         
@@ -206,7 +203,7 @@ function applyVotes() {
     oldvotes = realtimer;
     var pointer = 0;
     $.each(realtimer, function(k, v){
-        $("choice"+pointer).text(realtimer[0]);
+        $("choice"+pointer).text(v);
         pointer++;
     });
   
