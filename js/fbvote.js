@@ -241,7 +241,7 @@ function thecountdown() {
     timemer--;
     $("#countdown").text(timemer.toString().toHHMMSS());
     if (timemer === 0) {
-        if (realtimer.LIKE > realtimer.LOVE) {
+        if (realtimer.burgers > realtimer.pizza) {
             $("#winnera").fadeIn();
         } else {
             $("#winnerb").fadeIn();
