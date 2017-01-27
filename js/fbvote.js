@@ -220,10 +220,10 @@ function applyVotes() {
 //Tug of War Function
 function tugofwar(sideb, sidea) {
     var total = sidea + sideb;
-    $("#sidea").animate({ width: (sidea / total) * 100 + "%" }, { duration: 500, queue: false });
-    $("#sideb").animate({ width: (sideb / total) * 100 + "%" }, { duration: 500, queue: false });
-    $("#sidea").text(Math.ceil((sidea / total) * 100) + "%");
-    $("#sideb").text(Math.ceil((sideb / total) * 100) + "%");
+    $("#sideb").animate({ width: (sidea / total) * 100 + "%" }, { duration: 500, queue: false });
+    $("#sidea").animate({ width: (sideb / total) * 100 + "%" }, { duration: 500, queue: false });
+    $("#sideb").text(Math.ceil((sidea / total) * 100) + "%");
+    $("#sidea").text(Math.ceil((sideb / total) * 100) + "%");
 }
 
 //This will animate a little duder whenever a vote is counted (optional)

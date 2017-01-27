@@ -128,12 +128,14 @@
     position: absolute;
     top: 350px;
     left: 350px;
+        display: none;
 }
 
 #love {
     position: absolute;
     top: 350px;
     left: 850px;
+        display: none;
 }
 
 #haha {
