@@ -6,7 +6,7 @@ var realtimer = { "burgers": 0, "pizza": 0};
 var oldvotes = { "burgers": 0, "pizza": 0};
 var oldloves = 0;
 var oldlikes = 0;
-var timemer = 180;
+var timemer = 1800;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -170,7 +170,7 @@ function voteArrayCounter(data, next) {
             {
 
                 realtimer[a]++;
-              
+            
             }
 
 
