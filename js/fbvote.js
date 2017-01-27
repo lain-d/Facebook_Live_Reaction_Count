@@ -165,7 +165,7 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         $.each(realtimer, function(a, b){
-            console.log("the message is "+a);
+            console.log("the message is "+v);
             if(v.message.toLowerCase().includes("#"+a))
             {
                 console.log("voteCounted")
