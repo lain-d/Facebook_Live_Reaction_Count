@@ -209,7 +209,7 @@ function applyVotes() {
     });
   
    if ($(".tugofwarbar").is(':visible')) {
-   tugofwar(parseInt($("#choice1").text()), parseInt($("#choice2").text()));
+   tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
    }
     setTimeout(realTimeReactions, 2000);
 }
