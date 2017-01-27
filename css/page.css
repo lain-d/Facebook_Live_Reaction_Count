@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('background.png');
+    background-image:url('backgroundimg.jpg');
     background-color: #EEE;
 }
 .winscreeen
@@ -25,10 +25,11 @@
 {
      font-family: helvetica, sans-serif;
      position: absolute;
-     top: 100px;
-     left: 1050px;
-    color: blue;
-    font-size: 50px;
+     top: 14px;
+     left: 500px;
+     font-weight: bold;
+    color: black;
+    font-size: 75px;
 
 
 }
@@ -39,32 +40,40 @@
         font-family: helvetica, sans-serif;
         overflow: hidden;
     width: 100%;
-    height: 100px;
+    height: 200px;
     position: absolute;
     bottom: 0;
     left: 0;
     text-align: center;
-    color: white;
-    font-size: 50px;
+    color: black;
+    font-size: 150px;
+    vertical-align: middle;
 }
+
+
+
 #sidea
 {
-    background-color: red;
+    background-color: none;
+    background-image: url('burgerbk.png');
      overflow: hidden;
     width: 50%;
     height: 100%;
-
     display: inline-block;
 }
+#sidea img{ float: right; }
+
+
 #sideb
 {
-    background-color: blue;
-
+     background-image: url('pizzabk.png');
+    background-color: none;
      overflow: hidden;
     width: 50%;
     height: 100%;
     display: inline-block;
 }
+#sideb img{ float: left; }
 
 #winnera
 {
