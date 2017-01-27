@@ -2,8 +2,8 @@ var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
-var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
-var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
+var realtimer = { "#burgers": 0, "#pizza": 0};
+var oldvotes = { "#burgers": 0, "#pizza": 0};
 var oldloves = 0;
 var oldlikes = 0;
 var timemer = 180;
@@ -165,9 +165,9 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         $.each(realtimer, function(a, b){
-            if(v.message.includes(a))
+            if(v.message.includes(a.toLowerCase()))
             {
-                realtimer[a]++;
+                realtimer[a.toLowerCase()]++;
               
             }
 
