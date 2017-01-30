@@ -192,10 +192,11 @@ function applyVotes() {
 //This will animate a little duder whenever a vote is counted (optional)
 function animatevote(type, place1, place2)
 {
-    var times =  Math.random()*1000+500;
-    var dodo = "div"+Math.floor(Math.random()*100000);
-    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
-    $("#"+dodo).css({"top":"550px", "left":getRandomInt(place1, place2)+"px"});
-    $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
-    setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
+return;
+//    var times =  Math.random()*1000+500;
+ //   var dodo = "div"+Math.floor(Math.random()*100000);
+ //   $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
+ //   $("#"+dodo).css({"top":"550px", "left":getRandomInt(place1, place2)+"px"});
+ //   $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
+ //   setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
 }
