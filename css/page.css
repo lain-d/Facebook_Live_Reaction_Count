@@ -56,10 +56,10 @@ video
 .voteValue {
     font-family: atb;
     width:155px;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     background-color: none;
-    color: black;
+    color: white;
     text-align: center;
     padding: 10px;
     border-radius: 50px;
@@ -68,14 +68,14 @@ video
 
 #like {
     position: absolute;
-    top: 555px;
-    left: 417px;
+    top: 280px;
+    left: 775px;
 }
 
 #love {
     position: absolute;
-    top: 555px;
-    left: 770px;
+    top: 462px;
+    left: 775px;
 }
 
 #haha {
