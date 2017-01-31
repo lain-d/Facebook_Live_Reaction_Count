@@ -1,3 +1,8 @@
+//Sorry this code has gotten a little sloppy!!
+//New vote bubbles aren't working again, need to re-write the code to get the location of the DIV of the new vote value and spawn the 
+//bubble there...right now it's all hard coded (see lines 239-241)
+//Vs Bar is turned off. Should convert this into objects to take care of this, I know it looks like qBasic right now.
+
 var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
