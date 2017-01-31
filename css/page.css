@@ -5,9 +5,8 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('backgroundimg.png');
     background-size: cover;
-    background-color: #EEE;
+    background-color: transparent;
 }
 .winscreeen
 {
@@ -24,6 +23,7 @@
 
 .countdown
 {
+	display: none;
      font-family: helvetica, sans-serif;
      position: absolute;
      top: 295px;
@@ -118,7 +118,7 @@
     font-size: 30px;
     font-weight: bold;
     background-color: none;
-    color: white;
+    color: black;
     text-align: center;
     padding: 10px;
     z-index: 1001;
@@ -147,25 +147,25 @@
 }
 #v3 {
     position: absolute;
-    top: 653px;
+    top: 660px;
     left: 57px;
        
 }
 #v4 {
     position: absolute;
-    top: 653px;
+    top: 660px;
     left: 270px;
         
 }
 #v5 {
     position: absolute;
-    top: 653px;
+    top: 660px;
     left: 483px;
       
 }
 #v6 {
     position: absolute;
-    top: 653px;
+    top: 660px;
     left: 697px;
        
 }
