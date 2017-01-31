@@ -6,7 +6,7 @@
     left: 0;
     z-index: -1;
     background-image:url('backgroundimg.png');
-    background-size: co;
+    background-size: cover;
     background-color: #EEE;
 }
 .winscreeen
@@ -26,12 +26,11 @@
 {
      font-family: helvetica, sans-serif;
      position: absolute;
-     top: 14px;
-     left: 500px;
+     top: 295px;
+     left: 100px;
      font-weight: bold;
     color: white;
-    font-size: 50px;
-
+    font-size: 35px;
 
 }
 

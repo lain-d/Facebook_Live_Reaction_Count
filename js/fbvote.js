@@ -205,7 +205,7 @@ function applyVotes() {
     oldvotes = realtimer;
     var pointer = 0;
     $.each(realtimer, function(k, v){
-        console.log("adding for " + k +" the value is " + v + "applying to #choice" + pointer);
+     //   console.log("adding for " + k +" the value is " + v + "applying to #choice" + pointer);
         $("#choice"+pointer).text(v);
         pointer++;
     });
@@ -241,11 +241,12 @@ function thecountdown() {
     timemer--;
     $("#countdown").text("Time Left to vote: "+timemer.toString().toHHMMSS());
     if (timemer === 0) {
-        if (realtimer.burgers > realtimer.pizza) {
-            $("#winnera").fadeIn();
-        } else {
-            $("#winnerb").fadeIn();
-        }
+  //      if (realtimer.burgers > realtimer.pizza) {
+    //        $("#winnera").fadeIn();
+      //  } else {
+        //    $("#winnerb").fadeIn();
+       // }
+       console.log("done");
     } else {
         setTimeout(thecountdown, 1000);
     }
