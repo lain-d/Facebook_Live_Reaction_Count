@@ -239,7 +239,7 @@ function animatevote(type) {
 
 function thecountdown() {
     timemer--;
-    $("#countdown").text(timemer.toString().toHHMMSS());
+    $("#countdown").text("Time Left to vote: "+timemer.toString().toHHMMSS());
     if (timemer === 0) {
         if (realtimer.burgers > realtimer.pizza) {
             $("#winnera").fadeIn();
