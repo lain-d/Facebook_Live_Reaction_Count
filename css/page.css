@@ -60,7 +60,7 @@ video
     font-weight: bold;
     background-color: none;
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 10px;
     border-radius: 50px;
     z-index: 1001;
@@ -69,13 +69,13 @@ video
 #like {
     position: absolute;
     top: 280px;
-    left: 775px;
+    left: 835px;
 }
 
 #love {
     position: absolute;
     top: 462px;
-    left: 775px;
+    left: 835px;
 }
 
 #haha {
