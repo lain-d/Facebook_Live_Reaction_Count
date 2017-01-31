@@ -5,7 +5,8 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('backgroundimg.jpg');
+    background-image:url('backgroundimg.png');
+    background-size: co;
     background-color: #EEE;
 }
 .winscreeen
@@ -37,6 +38,7 @@
 
 .tugofwarbar
 {
+	display: none;
         font-family: helvetica, sans-serif;
         overflow: hidden;
     width: 100%;
@@ -113,62 +115,62 @@
 
 .voteValue {
     font-family: helvetica, sans-serif;
-    min-width:150px;
-    font-size: 50px;
+    min-width:80px;
+    font-size: 30px;
     font-weight: bold;
-    background-color: white;
-    color: black;
+    background-color: none;
+    color: white;
     text-align: center;
     padding: 10px;
-    border-radius: 50px;
     z-index: 1001;
+ 
 }
 
-#like {
+#v0 {
     position: absolute;
-    top: 350px;
-    left: 350px;
-        display: none;
+    top: 295px;
+    left: 695px;
+       
 }
 
-#love {
+
+#v1 {
     position: absolute;
-    top: 350px;
-    left: 850px;
-        display: none;
+    top: 295px;
+    left: 910px;
+      
 }
-
-#haha {
+#v2 {
     position: absolute;
-    top: 200px;
-    left: 1080px;
-    display: none;
-
+    top: 295px;
+    left: 1123px;
+      
 }
-
-#wow {
+#v3 {
     position: absolute;
-    top: 400px;
-    left: 200px;
-    display: none;
-
+    top: 653px;
+    left: 57px;
+       
 }
-
-#sad {
+#v4 {
     position: absolute;
-    top: 400px;
-    left: 650px;
-    display: none;
-
+    top: 653px;
+    left: 270px;
+        
 }
-
-#angry {
+#v5 {
     position: absolute;
-    top: 400px;
-    left: 1080px;
-    display: none;
-
+    top: 653px;
+    left: 483px;
+      
 }
+#v6 {
+    position: absolute;
+    top: 653px;
+    left: 697px;
+       
+}
+
 
 .face {
     height: 50px;

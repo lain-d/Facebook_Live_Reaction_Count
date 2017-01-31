@@ -2,8 +2,8 @@ var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
-var realtimer = { "burgers": 0, "pizza": 0};
-var oldvotes = { "burgers": 0, "pizza": 0};
+var realtimer = { "justineantm": 0, "cherishantm": 0,"tashantm":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
+var oldvotes = { "justineantm": 0, "cherishantm": 0,"tashantm":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
 var oldloves = 0;
 var oldlikes = 0;
 var timemer = 1800;
@@ -210,9 +210,9 @@ function applyVotes() {
         pointer++;
     });
   
-   if ($(".tugofwarbar").is(':visible')) {
-   tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
-   }
+  // if ($(".tugofwarbar").is(':visible')) {
+  // tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
+  // }
     setTimeout(realTimeReactions, 2000);
 }
 
