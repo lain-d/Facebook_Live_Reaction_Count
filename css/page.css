@@ -16,7 +16,7 @@ body
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('newvote.jpg');
+    background-image:url('bgimg2.jpg');
 }
 
 video
@@ -30,6 +30,7 @@ video
 }
 
 .valueboxes {
+    display: none;
     width: 1280px;
     height: 720px;
     position: absolute;
@@ -56,10 +57,10 @@ video
 .voteValue {
     font-family: atb;
     width:155px;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color: white;
+    color: black;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
@@ -68,14 +69,14 @@ video
 
 #like {
     position: absolute;
-    top: 280px;
-    left: 835px;
+    top: 285px;
+    left: 915px;
 }
 
 #love {
     position: absolute;
-    top: 462px;
-    left: 835px;
+    top: 500px;
+    left: 915px;
 }
 
 #haha {
