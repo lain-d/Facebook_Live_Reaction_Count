@@ -1,6 +1,6 @@
 @font-face {
     font-family: nickfont;
-    src: url('CGFUTU03.TTF');
+    src: url('sb.TTF');
 }
 
 .screen {
@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image: url(none);
+    background-image: url('bgimg2.jpg');
 }
 
 .valueboxes {
@@ -19,7 +19,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('placer.png');
+    background-image: url('frontboxes.png');
     z-index: 1000;
 }
 
@@ -39,11 +39,11 @@
     font-family: nickfont;
     width: auto;
     min-width: 120px;
-    font-size: 90px;
+    font-size: 40px;
     font-weight: bold;
-    background-color: white;
-    color: black;
-    text-align: right;
+    background-color: transparent;
+    color: white;
+    text-align: center;
     padding: 7px;
     margin-bottom: 22px;
     height: 122px;
@@ -60,26 +60,23 @@
 
 #love {
     position: absolute;
-    color: #da2493;
-    border-radius: 50px 0 0 50px;
-    top: 537px;
-    right: 856px;
+    top: 505px;
+    left: 843px;
+
 }
 
 #haha {
     position: absolute;
-    color: #6cde25;
-    text-align: left;
-    border-radius: 0 50px 50px 0px;
     top: 537px;
     left: 855px;
+    display: none;
 }
 
 #wow {
     position: absolute;
-    top: 400px;
-    left: 200px;
-    display: none;
+    top: 505px;
+    left: 367px;
+
 }
 
 #sad {

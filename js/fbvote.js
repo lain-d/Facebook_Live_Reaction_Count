@@ -148,14 +148,14 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if(v.type == "HAHA" && realtimer["HAHA"] > oldlikes)
+        if(v.type == "WOW" && realtimer["WOW"] > oldlikes)
         {
-            console.log("haha");
-            setTimeout(function(){animatevote("haha", 748, 935);}, getRandomInt(50, 2500));
+            console.log("wow");
+            setTimeout(function(){animatevote("wow", 222, 447);}, getRandomInt(50, 2500));
         }
         if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
         {
-             setTimeout(function(){animatevote("love", 308, 495);}, getRandomInt(50, 2500));
+             setTimeout(function(){animatevote("love", 700, 925);}, getRandomInt(50, 2500));
         }
     });
     if (next) {
