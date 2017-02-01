@@ -178,7 +178,7 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    oldlikes = realtimer.HAHA;
+    oldlikes = realtimer.WOW;
     oldloves = realtimer.LOVE;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);
@@ -199,3 +199,7 @@ function animatevote(type, place1, place2)
     $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
     setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
 }
+
+
+
+<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVH1%2Fvideos%2F10154572554343375%2F&width=400" width="400" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
