@@ -195,6 +195,6 @@ function animatevote(type, place1, place2)
     var dodo = "div"+Math.floor(Math.random()*100000);
     $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
     $("#"+dodo).css({"top":"600px", "left":getRandomInt(place1, place2)+"px"});
-    $("#"+dodo).animate({ top: 420}, { duration: Math.random()*1000+500, queue: false });
+    $("#"+dodo).animate({ top: 300}, { duration: Math.random()*1000+500, queue: false });
     setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},Math.random()*300+300);
 }
