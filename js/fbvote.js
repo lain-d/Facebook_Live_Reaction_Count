@@ -151,11 +151,11 @@ function voteArrayCounter(data, next) {
         if(v.type == "WOW" && realtimer["WOW"] > oldlikes)
         {
             console.log("wow");
-            setTimeout(function(){animatevote("wow", 222, 447);}, getRandomInt(50, 2500));
+            setTimeout(function(){animatevote("wow", 250, 447);}, getRandomInt(50, 2500));
         }
         if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
         {
-             setTimeout(function(){animatevote("love", 700, 925);}, getRandomInt(50, 2500));
+             setTimeout(function(){animatevote("love", 750, 925);}, getRandomInt(50, 2500));
         }
     });
     if (next) {
