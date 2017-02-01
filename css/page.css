@@ -1,3 +1,12 @@
+@font-face {
+    font-family: atb;
+    src: url('demi.ttf');
+}
+body
+{
+        font-family: atb;
+}
+
 .screen {
     width: 1280px;
     height: 720px;
@@ -27,12 +36,12 @@
 }
 
 .voteValue {
-    font-family: helvetica, sans-serif;
+         font-family: atb;
     width:150px;
     font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color: white;
+    color: black;
     text-align: center;
     padding: 10px;
     border-radius: 50px;
@@ -41,14 +50,14 @@
 
 #like {
     position: absolute;
-    top: 605px;
-    left: 885px;
+    top: 555px;
+    left: 407px;
 }
 
 #love {
     position: absolute;
-    top: 605px;
-    left: 240px;
+    top: 555px;
+    left: 766px;
 }
 
 #haha {
