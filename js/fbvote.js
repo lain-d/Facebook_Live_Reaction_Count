@@ -12,6 +12,7 @@ var oldvotes = { "justineantm": 0, "cherishantm": 0,"tashantm":0, "giahantm":0,"
 var oldloves = 0;
 var oldlikes = 0;
 var timemer = 1800;
+var commentcount = 0;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -168,7 +169,9 @@ function realTimeReactions() {
 }
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
+    console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
+        commentcount++;
         $.each(realtimer, function(a, b){
 
             if(v.message.toLowerCase().includes("#"+a))
@@ -200,6 +203,7 @@ function voteArrayCounter(data, next) {
 //If there are multiple pages of real Time reaction results (aka if there are more than 1000), 
 //this will get the next set of results.
 function pageLoop(url) {
+    console.log("DEBUG NESSAGE: GETTING NEXT SET OF COMMENTS");
     $.getJSON(url, function(response) {
         voteArrayCounter(response.data, response.paging.next);
     });
@@ -207,6 +211,8 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
+    console.log("DEBUG NESSAGE: FINISHED COUNTING "+commentcount+" COMMENTS");
+    commentcount = 0;
     oldvotes = realtimer;
     var pointer = 0;
     $.each(realtimer, function(k, v){
