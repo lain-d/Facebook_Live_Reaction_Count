@@ -174,16 +174,17 @@ function voteArrayCounter(data, next) {
     testobject = data;
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
-        console.log("the ID is " + v.id +"the last new ID is " + lastnew);
-        if(parseInt(v.id) === lastnew)
+        theid = v.id.split("_")
+        console.log("the ID is " + theid +"the last new ID is " + lastnew);
+        if(parseInt(theid) === lastnew)
         {
             console.log("last new comment applying");
             allvotes = true;
             return false;
         }
-        else if(parseInt(v.id) > lastnew){
-            console.log("got latest post ID is "+v.id)
-            lastnew = parseInt(v.id);
+        else if(parseInt(theid) > lastnew){
+            console.log("got latest post ID is "+theid)
+            lastnew = parseInt(theid);
         }
          
         $.each(realtimer, function(a, b){
