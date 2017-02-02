@@ -183,8 +183,8 @@ function voteArrayCounter(data, next) {
             return false;
         }
         else if(parseInt(theid[1]) > lastnew){
-            console.log("got latest post ID is "+theid)
-            lastnew = parseInt(theid);
+            console.log("got latest post ID is "+theid[1]);
+            lastnew = parseInt(theid[1]);
         }
          
         $.each(realtimer, function(a, b){
