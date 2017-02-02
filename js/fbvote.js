@@ -2,7 +2,7 @@
 //New vote bubbles aren't working again, need to re-write the code to get the location of the DIV of the new vote value and spawn the 
 //bubble there...right now it's all hard coded (see lines 239-241)
 //Vs Bar is turned off. Should convert this into objects to take care of this, I know it looks like qBasic right now.
-
+var testobject;
 var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
@@ -132,7 +132,7 @@ $("#savebutt").click(function() {
 
 //callback function to validate the post and 
 function validatePost() {
-    FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=500', function(response) {
+    FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=500&reverse_chronological', function(response) {
         if (response.error) {
             console.log("error loading post");
             console.log("no load");
@@ -151,7 +151,7 @@ function validatePost() {
 
 function realTimeReactions() {
  //   $.each(realtimer, function(i, v){realtimer[i]=0});
-    FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=500', function(response) {
+    FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=500&reverse_chronological', function(response) {
         if (response.error) {
             console.log("error loading post");
             $("#voteSettings").fadeIn(250);
@@ -170,6 +170,7 @@ function realTimeReactions() {
 }
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
+    testobject = data;
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
         console.log("the ID is " + v.id);
@@ -235,7 +236,8 @@ function applyVotes() {
   // if ($(".tugofwarbar").is(':visible')) {
   // tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
   // }
-    setTimeout(realTimeReactions, 2000);
+  console.log("Test Ended");
+  //  setTimeout(realTimeReactions, 2000);
 }
 
 
