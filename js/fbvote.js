@@ -6,6 +6,7 @@
 var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
+var lastnew = 0;
 //our real time and insight reaction data objects
 var realtimer = { "donald": 0, "trump": 0,"president":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
 var oldvotes = realtimer;
@@ -149,7 +150,7 @@ function validatePost() {
 // original post! Will apply votes once done, or page to the next array. See Development Branch to get Reaction Votes!
 
 function realTimeReactions() {
-    $.each(realtimer, function(i, v){realtimer[i]=0});
+ //   $.each(realtimer, function(i, v){realtimer[i]=0});
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=500', function(response) {
         if (response.error) {
             console.log("error loading post");
@@ -171,7 +172,16 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
-        commentcount++;
+        if(parseInt(v.id) === lastnew)
+        {
+            console.log("last new comment applying");
+            applyVotes();
+            return "lastnewvote";
+        }
+        else if(parseInt(v.id) > lastnew){
+            lastnew = parseInt(v.id);
+        }
+         
         $.each(realtimer, function(a, b){
 
             if(v.message.toLowerCase().includes(a))
