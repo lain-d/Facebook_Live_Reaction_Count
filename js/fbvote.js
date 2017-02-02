@@ -7,8 +7,8 @@ var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
-var realtimer = { "justineantm": 0, "cherishantm": 0,"tashantm":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
-var oldvotes = { "justineantm": 0, "cherishantm": 0,"tashantm":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
+var realtimer = { "donald": 0, "cherishantm": 0,"tashantm":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
+var oldvotes = realtimer;
 var oldloves = 0;
 var oldlikes = 0;
 var timemer = 1800;
