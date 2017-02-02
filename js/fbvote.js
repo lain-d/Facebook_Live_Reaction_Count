@@ -130,7 +130,7 @@ $("#savebutt").click(function() {
 
 //callback function to validate the post and 
 function validatePost() {
-    FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
+    FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=500', function(response) {
         if (response.error) {
             console.log("error loading post");
             console.log("no load");
@@ -149,7 +149,7 @@ function validatePost() {
 
 function realTimeReactions() {
     $.each(realtimer, function(i, v){realtimer[i]=0});
-    FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=1000', function(response) {
+    FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=500', function(response) {
         if (response.error) {
             console.log("error loading post");
             $("#voteSettings").fadeIn(250);
