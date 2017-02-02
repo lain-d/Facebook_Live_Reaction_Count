@@ -2,7 +2,7 @@
 //New vote bubbles aren't working again, need to re-write the code to get the location of the DIV of the new vote value and spawn the 
 //bubble there...right now it's all hard coded (see lines 239-241)
 //Vs Bar is turned off. Should convert this into objects to take care of this, I know it looks like qBasic right now.
-var testobject;
+
 var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
@@ -170,12 +170,12 @@ function realTimeReactions() {
 }
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
-    allvotes = false;
-    testobject = data;
+    var allvotes = false;
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
         theid = v.id.split("_")
-        console.log("the ID is " + theid[1] +"the last new ID is " + lastnew);
+        //console.log("the ID is " + theid[1] +"the last new ID is " + lastnew);
+        commentcount++;
         if(parseInt(theid[1]) === lastnew)
         {
             console.log("last new comment applying");
@@ -205,7 +205,8 @@ function voteArrayCounter(data, next) {
        // }
 
     });
-    if (next && allvotes != true) {
+    if (next && allvotes !== true) {
+        console.log("paging");
         pageLoop(next);
         return "loop";
     } else {
