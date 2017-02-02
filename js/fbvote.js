@@ -170,17 +170,19 @@ function realTimeReactions() {
 }
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
+    allvotes = false;
     testobject = data;
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
-        console.log("the ID is " + v.id);
+        console.log("the ID is " + v.id +"the last new ID is " + lastnew);
         if(parseInt(v.id) === lastnew)
         {
             console.log("last new comment applying");
-            applyVotes();
-            return "lastnewvote";
+            allvotes = true;
+            return false;
         }
         else if(parseInt(v.id) > lastnew){
+            console.log("got latest post ID is "+v.id)
             lastnew = parseInt(v.id);
         }
          
@@ -202,7 +204,7 @@ function voteArrayCounter(data, next) {
        // }
 
     });
-    if (next) {
+    if (next && allvotes != true) {
         pageLoop(next);
         return "loop";
     } else {
