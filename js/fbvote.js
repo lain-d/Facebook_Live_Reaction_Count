@@ -172,7 +172,7 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
-        console.log("the ID is " v.id);
+        console.log("the ID is "+ v.id);
         if(parseInt(v.id) === lastnew)
         {
             console.log("last new comment applying");
