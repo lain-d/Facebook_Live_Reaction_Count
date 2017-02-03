@@ -15,7 +15,6 @@ var oldloves = 0;
 var oldlikes = 0;
 var timemer = 1800;
 var commentcount = 0;
-var firstrun = true;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -178,7 +177,7 @@ function voteArrayCounter(data, next) {
         var timestamp = new Date(v.created_time).getTime();
         //console.log("the ID is " + theid[1] +"the last new ID is " + lastnew);
         commentcount++;
-        if (timestamp <= lastnew && firstrun === false) {
+        if (timestamp <= lastnew) {
             console.log("last new comment applying " + v.from.name);
             allvotes = true;
             return false;
@@ -228,7 +227,6 @@ function pageLoop(url) {
 function applyVotes() {
 	lastnew = bigdate;
     console.log("DEBUG NESSAGE: FINISHED COUNTING " + commentcount + " COMMENTS");
-    firstrun = false;
     commentcount = 0;
     oldvotes = realtimer;
     var pointer = 0;
@@ -242,7 +240,7 @@ function applyVotes() {
     // tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
     // }
     console.log("Test Ended");
-    //  setTimeout(realTimeReactions, 2000);
+    setTimeout(realTimeReactions, 2000);
 }
 
 
