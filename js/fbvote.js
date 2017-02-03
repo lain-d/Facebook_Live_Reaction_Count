@@ -9,7 +9,7 @@ var currentValues = { "pageID": "", "postID": "" };
 var lastnew = 0;
 var bigdate = 0;
 //our real time and insight reaction data objects
-var realtimer = { "donald": 0, "trump": 0, "president": 0, "giahantm": 0, "krislian": 0, "kyle": 0, "bintaantm": 0 };
+var realtimer = { "pizza": 0, "beer": 0, "president": 0, "giahantm": 0, "krislian": 0, "kyle": 0, "bintaantm": 0 };
 var oldvotes = realtimer;
 var oldloves = 0;
 var oldlikes = 0;
@@ -176,7 +176,7 @@ function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         var timestamp = new Date(v.created_time).getTime();
         //console.log("the ID is " + theid[1] +"the last new ID is " + lastnew);
-        commentcount++;
+   
         if (timestamp <= lastnew) {
             console.log("last new comment applying " + v.from.name);
             allvotes = true;
@@ -185,7 +185,7 @@ function voteArrayCounter(data, next) {
             console.log("got latest post ID is " + timestamp + " " + v.from.name);
             bigdate = timestamp;
         }
-
+        commentcount++;
         $.each(realtimer, function(a, b) {
 
             if (v.message.toLowerCase().includes(a)) {
