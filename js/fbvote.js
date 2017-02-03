@@ -185,7 +185,7 @@ function voteArrayCounter(data, next) {
         }
         else if(timestamp > lastnew){
             console.log("got latest post ID is "+timestamp + " " + v.from.name);
-            lastnew = parseInt(theid[1]);
+            lastnew = timestamp;
         }
          
         $.each(realtimer, function(a, b){
