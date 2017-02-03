@@ -7,8 +7,9 @@ var appID = "363856967314834";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 var lastnew = 0;
+var bigdate = 0;
 //our real time and insight reaction data objects
-var realtimer = { "donald": 0, "trump": 0,"president":0, "giahantm":0,"krislian":0,"kyle":0,"bintaantm":0};
+var realtimer = { "donald": 0, "trump": 0, "president": 0, "giahantm": 0, "krislian": 0, "kyle": 0, "bintaantm": 0 };
 var oldvotes = realtimer;
 var oldloves = 0;
 var oldlikes = 0;
@@ -151,7 +152,7 @@ function validatePost() {
 // original post! Will apply votes once done, or page to the next array. See Development Branch to get Reaction Votes!
 
 function realTimeReactions() {
- //   $.each(realtimer, function(i, v){realtimer[i]=0});
+    //   $.each(realtimer, function(i, v){realtimer[i]=0});
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/comments?limit=500&order=reverse_chronological', function(response) {
         if (response.error) {
             console.log("error loading post");
@@ -174,36 +175,33 @@ function voteArrayCounter(data, next) {
     var allvotes = false;
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
-    	var timestamp = new Date(v.created_time).getTime();
+        var timestamp = new Date(v.created_time).getTime();
         //console.log("the ID is " + theid[1] +"the last new ID is " + lastnew);
         commentcount++;
-        if(timestamp <= lastnew && firstrun === false)
-        {
-            console.log("last new comment applying "+v.from.name);
+        if (timestamp <= lastnew && firstrun === false) {
+            console.log("last new comment applying " + v.from.name);
             allvotes = true;
             return false;
+        } else if (timestamp > bigdate) {
+            console.log("got latest post ID is " + timestamp + " " + v.from.name);
+            bigdate = timestamp;
         }
-        else if(timestamp > lastnew){
-            console.log("got latest post ID is "+timestamp + " " + v.from.name);
-            lastnew = timestamp;
-        }
-         
-        $.each(realtimer, function(a, b){
 
-            if(v.message.toLowerCase().includes(a))
-            {
+        $.each(realtimer, function(a, b) {
+
+            if (v.message.toLowerCase().includes(a)) {
 
                 realtimer[a]++;
-            
+
             }
 
 
         });
-        
-    //   realtimer[v.type]++;
-      //  if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
+
+        //   realtimer[v.type]++;
+        //  if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
         //    setTimeout(function() { animatevote(v.type); }, getRandomInt(50, 2500));
-       // }
+        // }
 
     });
     if (next && allvotes !== true) {
@@ -228,22 +226,23 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    console.log("DEBUG NESSAGE: FINISHED COUNTING "+commentcount+" COMMENTS");
+	lastnew = bigdate;
+    console.log("DEBUG NESSAGE: FINISHED COUNTING " + commentcount + " COMMENTS");
     firstrun = false;
     commentcount = 0;
     oldvotes = realtimer;
     var pointer = 0;
-    $.each(realtimer, function(k, v){
-     //   console.log("adding for " + k +" the value is " + v + "applying to #choice" + pointer);
-        $("#choice"+pointer).text(v);
+    $.each(realtimer, function(k, v) {
+        //   console.log("adding for " + k +" the value is " + v + "applying to #choice" + pointer);
+        $("#choice" + pointer).text(v);
         pointer++;
     });
-  
-  // if ($(".tugofwarbar").is(':visible')) {
-  // tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
-  // }
-  console.log("Test Ended");
-  //  setTimeout(realTimeReactions, 2000);
+
+    // if ($(".tugofwarbar").is(':visible')) {
+    // tugofwar(parseInt($("#choice0").text()), parseInt($("#choice1").text()));
+    // }
+    console.log("Test Ended");
+    //  setTimeout(realTimeReactions, 2000);
 }
 
 
@@ -269,14 +268,14 @@ function animatevote(type) {
 
 function thecountdown() {
     timemer--;
-    $("#countdown").text("Time Left to vote: "+timemer.toString().toHHMMSS());
+    $("#countdown").text("Time Left to vote: " + timemer.toString().toHHMMSS());
     if (timemer === 0) {
-  //      if (realtimer.burgers > realtimer.pizza) {
-    //        $("#winnera").fadeIn();
-      //  } else {
+        //      if (realtimer.burgers > realtimer.pizza) {
+        //        $("#winnera").fadeIn();
+        //  } else {
         //    $("#winnerb").fadeIn();
-       // }
-       console.log("done");
+        // }
+        console.log("done");
     } else {
         setTimeout(thecountdown, 1000);
     }
