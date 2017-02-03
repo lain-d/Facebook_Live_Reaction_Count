@@ -1,5 +1,5 @@
 @font-face {
-    font-family: nickfont;
+    font-family: lovefont;
     src: url('sb.ttf');
 }
 
@@ -36,7 +36,7 @@
 }
 
 .voteValue {
-    font-family: nickfont;
+    font-family: lovefont;
     width: auto;
     min-width: 120px;
     font-size: 40px;
