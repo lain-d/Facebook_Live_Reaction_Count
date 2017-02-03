@@ -6,6 +6,7 @@ var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 
 var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var oldloves = 0;
 var oldlikes = 0;
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -148,14 +149,11 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if(v.type == "WOW" && realtimer["WOW"] > oldlikes)
-        {
-            console.log("wow");
-            setTimeout(function(){animatevote("wow", 250, 447);}, getRandomInt(50, 2500));
+        if (v.type == "WOW" && realtimer["WOW"] > oldlikes) {
+            setTimeout(function() { animatevote("wow", 300, 490); }, getRandomInt(50, 2500));
         }
-        if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
-        {
-             setTimeout(function(){animatevote("love", 750, 925);}, getRandomInt(50, 2500));
+        if (v.type == "LOVE" && realtimer["LOVE"] > oldloves) {
+            setTimeout(function() { animatevote("love", 775, 950); }, getRandomInt(50, 2500));
         }
     });
     if (next) {
@@ -190,15 +188,11 @@ function applyVotes() {
 }
 
 //This will animate a little duder whenever a vote is counted (optional)
-function animatevote(type, place1, place2)
-{
-    var times =  Math.random()*1000+500;
-    var dodo = "div"+Math.floor(Math.random()*100000);
-    $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
-    $("#"+dodo).css({"top":"600px", "left":getRandomInt(place1, place2)+"px"});
-    $("#"+dodo).animate({ top: 420-Math.random()*200}, { duration: times, queue: false });
-    setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},times-200);
+function animatevote(type, place1, place2) {
+    var times = Math.random() * 1000 + 500;
+    var dodo = "div" + Math.floor(Math.random() * 100000);
+    $(".screen").append("<div class='particle' id='" + dodo + "'><img src='images/" + type + "p.png'></div>");
+    $("#" + dodo).css({ "top": "590px", "left": getRandomInt(place1, place2) + "px" });
+    $("#" + dodo).animate({ top: 420 - Math.random() * 200 }, { duration: times, queue: false });
+    setTimeout(function() { $("#" + dodo).animate({ opacity: 0 }, { duration: 200, queue: false, complete: function() { $("#" + dodo).remove(); } }); }, times - 200);
 }
-
-
-
