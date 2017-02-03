@@ -14,6 +14,7 @@ var oldloves = 0;
 var oldlikes = 0;
 var timemer = 1800;
 var commentcount = 0;
+var firstrun = true;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -173,17 +174,17 @@ function voteArrayCounter(data, next) {
     var allvotes = false;
     console.log("DEBUG NESSAGE: GETTING COMMENTS AND SORTING");
     $.each(data, function(i, v) {
-        theid = v.id.split("_")
+    	var timestamp = new Date(v.created_time).getTime();
         //console.log("the ID is " + theid[1] +"the last new ID is " + lastnew);
         commentcount++;
-        if(parseInt(theid[1]) === lastnew)
+        if(timestamp <= lastnew && firstrun === false)
         {
-            console.log("last new comment applying");
+            console.log("last new comment applying "+v.from.name);
             allvotes = true;
             return false;
         }
-        else if(parseInt(theid[1]) > lastnew){
-            console.log("got latest post ID is "+theid[1]);
+        else if(timestamp > lastnew){
+            console.log("got latest post ID is "+timestamp + " " + v.from.name);
             lastnew = parseInt(theid[1]);
         }
          
@@ -228,6 +229,7 @@ function pageLoop(url) {
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
     console.log("DEBUG NESSAGE: FINISHED COUNTING "+commentcount+" COMMENTS");
+    firstrun = false;
     commentcount = 0;
     oldvotes = realtimer;
     var pointer = 0;
