@@ -60,7 +60,7 @@ video
     font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color: black;
+    color: white;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
@@ -69,14 +69,14 @@ video
 
 #like {
     position: absolute;
-    top: 285px;
-    left: 915px;
+    top: 275px;
+    left: 835px;
 }
 
 #love {
     position: absolute;
-    top: 500px;
-    left: 915px;
+    top: 454px;
+    left: 835px;
 }
 
 #haha {
