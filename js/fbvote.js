@@ -149,8 +149,8 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
-        if (v.type == "WOW" && realtimer["WOW"] > oldlikes) {
-            setTimeout(function() { animatevote("wow", 300, 490); }, getRandomInt(50, 2500));
+        if (v.type == "LIKE" && realtimer["LIKE"] > oldlikes) {
+            setTimeout(function() { animatevote("like", 300, 490); }, getRandomInt(50, 2500));
         }
         if (v.type == "LOVE" && realtimer["LOVE"] > oldloves) {
             setTimeout(function() { animatevote("love", 775, 950); }, getRandomInt(50, 2500));
@@ -176,7 +176,7 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    oldlikes = realtimer.WOW;
+    oldlikes = realtimer.LIKE;
     oldloves = realtimer.LOVE;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);

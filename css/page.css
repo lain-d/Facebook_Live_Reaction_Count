@@ -53,9 +53,8 @@
 
 #like {
     position: absolute;
-    display: none;
-    top: 615px;
-    left: 235px;
+    top: 505px;
+    left: 367px;
 }
 
 #love {
@@ -76,7 +75,7 @@
     position: absolute;
     top: 505px;
     left: 367px;
-
+	display: none;
 }
 
 #sad {
