@@ -43,7 +43,7 @@
     font-weight: bold;
     background-color: transparent;
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 7px;
     margin-bottom: 22px;
     height: 122px;
@@ -54,27 +54,27 @@
 #like {
     position: absolute;
     top: 505px;
-    left: 105px;
+    left: 155px;
 }
 
 #love {
     position: absolute;
     top: 505px;
-    left: 715px;
+    left: 765px;
 
 }
 
 #haha {
     position: absolute;
     top: 505px;
-    left: 415px;
+    left: 465px;
 
 }
 
 #wow {
     position: absolute;
     top: 505px;
-    left: 1020px;
+    left: 1080px;
 }
 
 #sad {
