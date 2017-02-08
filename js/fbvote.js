@@ -155,10 +155,10 @@ function voteArrayCounter(data, next) {
             setTimeout(function() { animatevote("like", 100, 250); }, getRandomInt(50, 2500));
         }
         if (v.type == "LOVE" && realtimer["LOVE"] > oldloves) {
-            setTimeout(function() { animatevote("love", 400, 550); }, getRandomInt(50, 2500));
+            setTimeout(function() { animatevote("love", 700, 850); }, getRandomInt(50, 2500));
         }
                 if (v.type == "HAHA" && realtimer["HAHA"] > oldhaha) {
-            setTimeout(function() { animatevote("haha", 700, 850); }, getRandomInt(50, 2500));
+            setTimeout(function() { animatevote("haha", 400, 550); }, getRandomInt(50, 2500));
         }
                 if (v.type == "WOW" && realtimer["WOW"] > oldwow) {
             setTimeout(function() { animatevote("wow", 1000, 1150); }, getRandomInt(50, 2500));
