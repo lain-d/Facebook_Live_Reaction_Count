@@ -151,11 +151,11 @@ function voteArrayCounter(data, next) {
         realtimer[v.type]++;
         if(v.type == "LIKE" && realtimer["LIKE"] > oldlikes)
         {
-            setTimeout(function(){animatevote("like", 325, 500);}, getRandomInt(50, 2500));
+            setTimeout(function(){animatevote("like", 975, 1045);}, getRandomInt(50, 2500));
         }
-        if(v.type == "LOVE" && realtimer["LOVE"] > oldloves)
+        if(v.type == "WOW" && realtimer["WOW"] > oldloves)
         {
-             setTimeout(function(){animatevote("love", 700, 900);}, getRandomInt(50, 2500));
+             setTimeout(function(){animatevote("wow", 1102, 1172);}, getRandomInt(50, 2500));
         }
     });
     if (next) {
@@ -179,7 +179,7 @@ function pageLoop(url) {
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
     oldlikes = realtimer.LIKE;
-    oldloves = realtimer.LOVE;
+    oldloves = realtimer.WOW;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);
     $("#hahan").text(realtimer.HAHA);
@@ -194,7 +194,7 @@ function animatevote(type, place1, place2)
 {
     var dodo = "div"+Math.floor(Math.random()*100000);
     $(".screen").append("<div class='particle' id='"+dodo+"'><img src='images/"+type+"p.png'></div>");
-    $("#"+dodo).css({"top":"600px", "left":getRandomInt(place1, place2)+"px"});
-    $("#"+dodo).animate({ top: 300}, { duration: Math.random()*1000+500, queue: false });
+    $("#"+dodo).css({"top":"375px", "left":getRandomInt(place1, place2)+"px"});
+    $("#"+dodo).animate({ top: 100}, { duration: Math.random()*1000+500, queue: false });
     setTimeout(function(){$("#"+dodo).animate({ opacity: 0},  { duration: 200, queue: false, complete: function(){$("#"+dodo).remove();} });},Math.random()*300+300);
 }

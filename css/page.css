@@ -1,6 +1,6 @@
 @font-face {
     font-family: atb;
-    src: url('demi.ttf');
+    src: url('bentonsans_condensed_medium-webfont.woff');
 }
 body
 {
@@ -37,11 +37,11 @@ body
 
 .voteValue {
          font-family: atb;
-    width:150px;
-    font-size: 50px;
+    width:50px;
+    font-size: 30px;
     font-weight: bold;
     background-color: none;
-    color: black;
+    color: white;
     text-align: center;
     padding: 10px;
     border-radius: 50px;
@@ -50,14 +50,15 @@ body
 
 #like {
     position: absolute;
-    top: 555px;
-    left: 407px;
+    top: 472px;
+    left: 995px;
 }
 
 #love {
     position: absolute;
-    top: 555px;
-    left: 766px;
+    top: 472px;
+    left: 1105px;
+     display:none;
 }
 
 #haha {
@@ -69,9 +70,9 @@ body
 
 #wow {
     position: absolute;
-    top: 400px;
-    left: 200px;
-        display:none;
+    top: 472px;
+    left: 1122px;
+       
 }
 
 #sad {
