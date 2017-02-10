@@ -6,8 +6,6 @@ var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 
 var insights = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
 var oldloves = 0;
 var oldlikes = 0;
-var oldwow = 0;
-var oldhaha = 0;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -152,16 +150,10 @@ function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         realtimer[v.type]++;
         if (v.type == "LIKE" && realtimer["LIKE"] > oldlikes) {
-            setTimeout(function() { animatevote("like", 100, 250); }, getRandomInt(50, 2500));
+            setTimeout(function() { animatevote("like", 300, 490); }, getRandomInt(50, 2500));
         }
         if (v.type == "LOVE" && realtimer["LOVE"] > oldloves) {
-            setTimeout(function() { animatevote("love", 700, 850); }, getRandomInt(50, 2500));
-        }
-                if (v.type == "HAHA" && realtimer["HAHA"] > oldhaha) {
-            setTimeout(function() { animatevote("haha", 400, 550); }, getRandomInt(50, 2500));
-        }
-                if (v.type == "WOW" && realtimer["WOW"] > oldwow) {
-            setTimeout(function() { animatevote("wow", 1000, 1150); }, getRandomInt(50, 2500));
+            setTimeout(function() { animatevote("love", 775, 950); }, getRandomInt(50, 2500));
         }
     });
     if (next) {
@@ -186,8 +178,6 @@ function pageLoop(url) {
 function applyVotes() {
     oldlikes = realtimer.LIKE;
     oldloves = realtimer.LOVE;
-        oldhaha = realtimer.HAHA;
-    oldwow = realtimer.WOW;
     $("#liken").text(realtimer.LIKE);
     $("#loven").text(realtimer.LOVE);
     $("#hahan").text(realtimer.HAHA);
