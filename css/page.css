@@ -16,7 +16,7 @@ body
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('bgimg2.jpg');
+    background-image:url('bgimg.jpg');
 }
 
 video
@@ -71,12 +71,14 @@ video
     position: absolute;
     top: 275px;
     left: 835px;
+    display: none;
 }
 
 #love {
     position: absolute;
-    top: 454px;
+    top: 290px;
     left: 835px;
+       
 }
 
 #haha {
@@ -88,9 +90,9 @@ video
 
 #wow {
     position: absolute;
-    top: 400px;
-    left: 200px;
-    display:none;
+    top: 447px;
+    left: 835px;
+
 }
 
 #sad {
