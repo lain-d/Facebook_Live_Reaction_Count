@@ -60,7 +60,7 @@ video
     font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color: white;
+    color: black;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
@@ -74,11 +74,18 @@ video
     display: none;
 }
 
+#wow {
+    position: absolute;
+     top: 470px;
+    left: 850px;
+
+}
+
 #love {
     position: absolute;
-    top: 290px;
-    left: 835px;
-       
+    top: 255px;
+    left: 850px;
+
 }
 
 #haha {
@@ -88,12 +95,7 @@ video
     display:none;
 }
 
-#wow {
-    position: absolute;
-    top: 447px;
-    left: 835px;
 
-}
 
 #sad {
     position: absolute;
