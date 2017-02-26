@@ -1,4 +1,4 @@
-var appID = "372358933100350";
+var appID = "1646190352344234";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
@@ -7,6 +7,10 @@ var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0
 var oldloves = 0;
 var oldlikes = 0;
 var timemer = 180;
+var votesLeft = 1000;
+var reactCount = 0;
+
+
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -164,6 +168,7 @@ function realTimeReactions() {
 //Function To Count the Reactions returned from  Facebook, includes callback to get next set of data or display results.
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
+        reactCount++;
         realtimer[v.type]++;
         if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
             setTimeout(function() { animatevote(v.type); }, getRandomInt(50, 2500));
@@ -190,50 +195,20 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    oldvotes = realtimer;
-    $("#liken").text(realtimer.LIKE);
-    $("#loven").text(realtimer.LOVE);
-    $("#hahan").text(realtimer.HAHA);
-    $("#wown").text(realtimer.WOW);
-    $("#sadn").text(realtimer.SAD);
-    $("#angryn").text(realtimer.ANGRY);
-    if ($(".tugofwarbar").is(':visible')) {
-        tugofwar(realtimer.LOVE, realtimer.LIKE);
+    var unlockVotes = 1000 - reactCount;
+    if (unlockVotes >= 0)
+    {
+        unlockVotes = 0;
+        $(".blackout").css('opacity', '0');
+        $(".countText").text("UNLOCKED!!!!!!");
     }
-    setTimeout(realTimeReactions, 2000);
-}
-
-
-//Tug of War Function
-function tugofwar(sideb, sidea) {
-    var total = sidea + sideb;
-    $("#sidea").animate({ width: (sidea / total) * 100 + "%" }, { duration: 500, queue: false });
-    $("#sideb").animate({ width: (sideb / total) * 100 + "%" }, { duration: 500, queue: false });
-    $("#sidea").text(Math.ceil((sidea / total) * 100) + "%");
-    $("#sideb").text(Math.ceil((sideb / total) * 100) + "%");
-}
-
-//This will animate a little duder whenever a vote is counted (optional)
-function animatevote(type) {
-    type = type.toLowerCase();
-    var times = Math.random() * 1000 + 500;
-    var dodo = "div" + Math.floor(Math.random() * 100000);
-    $(".screen").append("<div class='particle' id='" + dodo + "'><img src='images/bubbles/" + type + ".png'></div>");
-    $("#" + dodo).css({ "top": $("#" + type).css("top"), "left": getRandomInt(parseInt($("#" + type).css("left")), parseInt($("#" + type).css("left")) + parseInt($("#" + type).css("width"))) + "px" });
-    $("#" + dodo).animate({ top: parseInt($("#" + type).css("top")) - 200 - (Math.random() * 200) }, { duration: times, queue: false });
-    setTimeout(function() { $("#" + dodo).animate({ opacity: 0 }, { duration: 200, queue: false, complete: function() { $("#" + dodo).remove(); } }); }, times - 200);
-}
-
-function thecountdown() {
-    timemer--;
-    $("#countdown").text(timemer.toString().toHHMMSS());
-    if (timemer === 0) {
-        if (realtimer.LIKE > realtimer.LOVE) {
-            $("#winnera").fadeIn();
-        } else {
-            $("#winnerb").fadeIn();
-        }
-    } else {
-        setTimeout(thecountdown, 1000);
+    else
+    { 
+        var opa = unlockVotes / 1000;
+        $(".blackout").css('opacity', opa);
+        $(".countText").text(unlockVotes + " Likes Needed To Unlock!");
+        reactCount = 0;
+        setTimeout(realTimeReactions, 2000);
     }
+    
 }

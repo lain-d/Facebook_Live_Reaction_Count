@@ -8,9 +8,23 @@
     background-image:url('background.png');
     background-color: #EEE;
 }
+
+
+.blackout {
+    width: 1280px;
+    height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: purple;
+    opacity: 1;
+}
+
+
 .winscreeen
 {
-     width: 1280px;
+    width: 1280px;
     height: 720px;
     position: absolute;
     top: 0;
@@ -21,61 +35,18 @@
     z-index: 100000000000000000;
 }
 
-.countdown
+.countText
 {
      font-family: helvetica, sans-serif;
      position: absolute;
      top: 100px;
-     left: 1050px;
+     left: 10px;
     color: blue;
     font-size: 50px;
+    z-index: 1000000000;
 
 
 }
-
-
-.tugofwarbar
-{
-        font-family: helvetica, sans-serif;
-        overflow: hidden;
-    width: 100%;
-    height: 100px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    color: white;
-    font-size: 50px;
-}
-#sidea
-{
-    background-color: red;
-     overflow: hidden;
-    width: 50%;
-    height: 100%;
-
-    display: inline-block;
-}
-#sideb
-{
-    background-color: blue;
-
-     overflow: hidden;
-    width: 50%;
-    height: 100%;
-    display: inline-block;
-}
-
-#winnera
-{
-       background-image: url('sidea.gif');
-}
-
-#winnerb
-{
-           background-image: url('sideb.gif');
-}
-
 /* this is if you want a foreground image */
 .valueboxes {
     display: none;
