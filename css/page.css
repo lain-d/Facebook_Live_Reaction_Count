@@ -5,10 +5,9 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image:url('background.jpg');
+    background-image: url('background.jpg');
     background-color: #EEE;
 }
-
 
 .blackout {
     width: 1280px;
@@ -22,156 +21,30 @@
     opacity: 1;
 }
 
-
-.winscreeen
-{
-    width: 1280px;
-    height: 720px;
+.countText {
+    font-family: helvetica, sans-serif;
     position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    display: none;
-    color: white;
-    z-index: 100000000000000000;
-}
-
-.countText
-{
-     font-family: helvetica, sans-serif;
-     position: absolute;
-     top: 100px;
-     left: 10px;
+    top: 100px;
+    left: 10px;
     color: blue;
     font-size: 50px;
     z-index: 1000000000;
-
-
 }
+
+
 /* this is if you want a foreground image */
-.valueboxes {
-    display: none;
-    width: 1280px;
-    height: 720px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image:url('frontboxes.png');
-    z-index: 1000;
-}
 
-.particle
-{
+.particle {
     width: 35px;
     height: 35px;
     position: absolute;
     z-index: 999;
 }
 
-.particle img
-{
-        width: 35px;
+.particle img {
+    width: 35px;
     height: 35px;
 }
-
-.voteValue {
-    font-family: helvetica, sans-serif;
-    min-width:150px;
-    font-size: 50px;
-    font-weight: bold;
-    background-color: white;
-    color: black;
-    text-align: center;
-    padding: 10px;
-    border-radius: 50px;
-    z-index: 1001;
-}
-
-#like {
-    position: absolute;
-    top: 350px;
-    left: 350px;
-}
-
-#love {
-    position: absolute;
-    top: 350px;
-    left: 850px;
-}
-
-#haha {
-    position: absolute;
-    top: 200px;
-    left: 1080px;
-    display: none;
-
-}
-
-#wow {
-    position: absolute;
-    top: 400px;
-    left: 200px;
-    display: none;
-
-}
-
-#sad {
-    position: absolute;
-    top: 400px;
-    left: 650px;
-    display: none;
-
-}
-
-#angry {
-    position: absolute;
-    top: 400px;
-    left: 1080px;
-    display: none;
-
-}
-
-.face {
-    height: 50px;
-    width: 50px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: inline-block;
-    margin-top: 5px;
-
-}
-
-.like {
-    background-image: url('../images/like.png');
-
-}
-
-.love {
-    background-image: url('../images/love.png');
-
-}
-
-.haha {
-    background-image: url('../images/haha.png');
-
-}
-
-.wow {
-    background-image: url('../images/wow.png');
-
-}
-
-.angry {
-    background-image: url('../images/angry.png');
-
-}
-
-.sad {
-    background-image: url('../images/sad.png');
-
-}
-
-/* you probably don't have to mess with this stuff */
 
 html,
 body {

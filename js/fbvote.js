@@ -2,20 +2,12 @@ var appID = "1646190352344234";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
-var realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
-var oldvotes = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
-var oldloves = 0;
-var oldlikes = 0;
-var timemer = 180;
-var votesLeft = 1000;
+var unlocksNeeded = 1000;
 var reactCount = 0;
-
-
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 //This Script will log the User in to Facebook.
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -88,7 +80,7 @@ $('#postIDval').keypress(function(e) {
         e.preventDefault();
         event.preventDefault;
         $("#savebutt").click();
-        return false; //<---- Add this line
+        return false;
     }
 });
 
@@ -96,6 +88,7 @@ $('#postIDval').keypress(function(e) {
 $("#savebutt").click(function() {
     currentValues.pageID = $("#pageIDval").val();
     currentValues.postID = $("#postIDval").val();
+    unlocksNeeded = $("#reactval").val();
     if (isNaN(currentValues.pageID)) {
         FB.api(currentValues.pageID, function(response) {
             if (response.error) {
@@ -120,7 +113,6 @@ function validatePost() {
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
         if (response.error) {
             console.log("error loading post");
-            console.log("no load");
             $("#voteSettings").show();
             $("#sm").text("invalid Post ID").show().fadeOut(5000);
 
@@ -134,7 +126,6 @@ function validatePost() {
 // original post! Will apply votes once done, or page to the next array. See Development Branch to get Reaction Votes!
 
 function realTimeReactions() {
-    realtimer = { "LIKE": 0, "LOVE": 0, "WOW": 0, "HAHA": 0, "SAD": 0, "ANGRY": 0 };
     FB.api(currentValues.pageID + '_' + currentValues.postID + '/reactions?limit=1000', function(response) {
         if (response.error) {
             console.log("error loading post");
@@ -157,13 +148,9 @@ function realTimeReactions() {
 function voteArrayCounter(data, next) {
     $.each(data, function(i, v) {
         reactCount++;
-        realtimer[v.type]++;
-        if (realtimer[v.type] > oldvotes[v.type] && $("#" + (v.type).toLowerCase()).is(':visible')) {
-            setTimeout(function() { animatevote(v.type); }, getRandomInt(50, 2500));
-        }
 
     });
-    if (next) {
+    if (next && reactCount < unlocksNeeded) {
         pageLoop(next);
         return "loop";
     } else {
@@ -183,20 +170,17 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
-    var unlockVotes = 1000 - reactCount;
-    if (unlockVotes <= 0)
-    {
+    var unlockVotes = unlocksNeeded - reactCount;
+    if (unlockVotes <= 0) {
         unlockVotes = 0;
         $(".blackout").css('opacity', '0');
         $(".countText").text("UNLOCKED!!!!!!");
-    }
-    else
-    { 
-        var opa = unlockVotes / 1000;
+    } else {
+        var opa = unlockVotes / unlocksNeeded;
         $(".blackout").css('opacity', opa);
         $(".countText").text(unlockVotes + " Likes Needed To Unlock!");
         reactCount = 0;
         setTimeout(realTimeReactions, 2000);
     }
-    
+
 }
