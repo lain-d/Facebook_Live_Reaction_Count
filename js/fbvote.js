@@ -184,7 +184,7 @@ function pageLoop(url) {
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
     var unlockVotes = 1000 - reactCount;
-    if (unlockVotes >= 0)
+    if (unlockVotes <= 0)
     {
         unlockVotes = 0;
         $(".blackout").css('opacity', '0');
