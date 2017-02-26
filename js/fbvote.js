@@ -15,18 +15,7 @@ var reactCount = 0;
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-String.prototype.toHHMMSS = function() {
-    var sec_num = parseInt(this, 10); // don't forget the second param
-    var hours = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    if (hours < 10) { hours = "0" + hours; }
-    if (minutes < 10) { minutes = "0" + minutes; }
-    if (seconds < 10) { seconds = "0" + seconds; }
-    return hours + ':' + minutes + ':' + seconds;
-}
-$("#countdown").text(timemer.toString().toHHMMSS());
 //This Script will log the User in to Facebook.
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -136,7 +125,6 @@ function validatePost() {
             $("#sm").text("invalid Post ID").show().fadeOut(5000);
 
         } else {
-            thecountdown();
             realTimeReactions();
         }
     });
