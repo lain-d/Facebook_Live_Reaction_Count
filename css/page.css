@@ -60,39 +60,41 @@ video
     font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color: black;
+    color: white;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
     z-index: 1001;
 }
 
+
+#love {
+    position: absolute;
+	top: 610px;
+    left: 145px;
+
+}
+
 #like {
     position: absolute;
-    top: 304px;
-    left: 825px;
-display: none;
+   	top: 610px;
+    left: 450px;
+
+}
+
+
+
+#haha {
+    position: absolute;
+   	top: 610px;
+    left: 755px;
+
 }
 
 #wow {
     position: absolute;
-     top: 470px;
-      left: 815px;
-
-}
-
-#love {
-    position: absolute;
-	top: 250px;
-    left: 815px;
-
-}
-
-#haha {
-    position: absolute;
-    top: 421px;
-    left: 825px;
-  display:none;
+    	top: 610px;
+      left: 1060px;
 }
 
 
