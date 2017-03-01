@@ -43,7 +43,7 @@
     font-weight: bold;
     background-color: transparent;
     color: black;
-    text-align: center;
+    text-align: left;
     padding: 10px;
     border-radius: 50px;
     z-index: 1001;
@@ -52,7 +52,7 @@
 #like {
     position: absolute;
     top: 465px;
-    left: 685px;
+    left: 741px;
 }
 
 #love {
@@ -81,7 +81,7 @@
 #sad {
     position: absolute;
     top: 299px;
-    left: 685px;
+    left: 741px;
 
 
 
