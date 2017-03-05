@@ -70,15 +70,15 @@ video
 
 #haha {
     position: absolute;
-    top: 617px;
-    left: 765px;
+    top: 610px;
+    left: 907px;
 
 }
 
 #love {
     position: absolute;
-    top: 617px;
-    left: 145px;
+    top: 610px;
+    left: 295px;
 
 }
 
@@ -86,8 +86,8 @@ video
 
 #like {
     position: absolute;
-      top: 617px;
-    left: 455px;
+      top: 610px;
+    left: 600px;
 
 }
 
@@ -95,6 +95,7 @@ video
     position: absolute;
     top: 617px;
     left: 1070px;
+    display:none;
 }
 
 
