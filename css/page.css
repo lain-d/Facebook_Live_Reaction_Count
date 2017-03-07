@@ -57,7 +57,7 @@ video
 .voteValue {
     font-family: atb;
     width:155px;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: bold;
     background-color: none;
     color: white;
@@ -72,13 +72,14 @@ video
     position: absolute;
     top: 610px;
     left: 907px;
+    display:none;
 
 }
 
 #love {
     position: absolute;
-    top: 610px;
-    left: 295px;
+    top: 290px;
+    left: 800px;
 
 }
 
@@ -88,14 +89,14 @@ video
     position: absolute;
       top: 610px;
     left: 600px;
-
+ display:none;
 }
 
 #wow {
     position: absolute;
-    top: 617px;
-    left: 1070px;
-    display:none;
+    top: 445px;
+    left: 800px;
+    
 }
 
 
