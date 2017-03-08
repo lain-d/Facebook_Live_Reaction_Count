@@ -57,10 +57,10 @@ video
 .voteValue {
     font-family: atb;
     width:155px;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: bold;
     background-color: none;
-    color: white;
+    color: black;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
@@ -72,13 +72,14 @@ video
     position: absolute;
     top: 617px;
     left: 765px;
+        display:none;
 
 }
 
 #love {
     position: absolute;
-    top: 617px;
-    left: 145px;
+    top: 250px;
+    left: 775px;
 
 }
 
@@ -88,13 +89,14 @@ video
     position: absolute;
       top: 617px;
     left: 455px;
+        display:none;
 
 }
 
 #wow {
     position: absolute;
-    top: 617px;
-    left: 1070px;
+    top: 470px;
+    left: 775px;
 }
 
 
@@ -104,6 +106,7 @@ video
     top: 400px;
     left: 650px;
     display:none;
+        display:none;
 }
 
 #angry {
