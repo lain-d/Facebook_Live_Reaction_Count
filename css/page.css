@@ -51,16 +51,24 @@
 
 #like {
     position: absolute;
-    top: 465px;
-    left: 741px;
+    top: 370px;
+    left: 650px;
 }
 
 #love {
     position: absolute;
-    top: 350px;
-    left: 850px;
-    display: none;
+    top: 215px;
+    left: 650px;
+ 
 }
+
+
+#wow {
+    position: absolute;
+    top: 525px;
+    left: 650px;
+}
+
 
 #haha {
     position: absolute;
@@ -70,18 +78,13 @@
 
 }
 
-#wow {
-    position: absolute;
-    top: 400px;
-    left: 200px;
-    display: none;
 
-}
 
 #sad {
     position: absolute;
     top: 299px;
     left: 741px;
+    display: none;
 
 
 
