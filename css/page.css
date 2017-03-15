@@ -59,8 +59,8 @@ video
     width:155px;
     font-size: 50px;
     font-weight: bold;
-    background-color: none;
-    color: white;
+    background-color: transparent;
+    color: black;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
@@ -72,14 +72,14 @@ video
     position: absolute;
     top: 667px;
     left: 765px;
-        display:none;
+    display:none;
 
 }
 
 #love {
     position: absolute;
-    top: 297px;
-    left: 775px;
+    top: 555px;
+    left: 780px;
 
 }
 
@@ -87,9 +87,8 @@ video
 
 #like {
     position: absolute;
-      top: 617px;
-    left: 455px;
-        display:none;
+    top: 555px;
+    left: 430px;
 
 }
 
@@ -97,6 +96,8 @@ video
     position: absolute;
     top: 448px;
     left: 775px;
+   display:none;
+
 }
 
 
