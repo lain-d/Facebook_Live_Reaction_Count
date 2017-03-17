@@ -3,10 +3,8 @@
     src: url('dincb.ttf');
 }
 
-
-.fillbar
-{
-      font-family: dincb;
+.fillbar {
+    font-family: dincb;
     position: absolute;
     top: 648px;
     width: 1215px;
@@ -14,19 +12,16 @@
     background-color: white;
     overflow: hidden;
     border-radius: 25px;
-left: 33px;
+    left: 33px;
 }
 
-.barfill
-{
-
-      font-family: dincb;
+.barfill {
+    font-family: dincb;
     position: relative;
     background-color: #e610ca;
     height: 50px;
     width: 0%;
 }
-
 
 .screen {
     width: 1280px;
@@ -52,7 +47,7 @@ left: 33px;
 }
 
 .countText {
-  font-family: dincb;
+    font-family: dincb;
     position: absolute;
     text-align: center;
     top: 648px;
@@ -61,8 +56,8 @@ left: 33px;
     font-size: 50px;
     z-index: 1000000000;
 }
-s
 
+s
 /* this is if you want a foreground image */
 
 .particle {

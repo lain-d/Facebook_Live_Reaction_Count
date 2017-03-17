@@ -55,7 +55,7 @@ window.fbAsyncInit = function() {
 
 // Load the SDK asynchronously
 (function(d, s, id) {
-                $(".countText").text(reactCount + " OF " + unlocksNeeded);
+
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s);
@@ -91,6 +91,7 @@ $("#savebutt").click(function() {
     currentValues.pageID = $("#pageIDval").val();
     currentValues.postID = $("#postIDval").val();
     unlocksNeeded = $("#reactval").val();
+    $(".countText").text(reactCount + " OF " + unlocksNeeded);
     if (isNaN(currentValues.pageID)) {
         FB.api(currentValues.pageID, function(response) {
             if (response.error) {
@@ -178,13 +179,14 @@ function applyVotes() {
         $(".barfill").css('width', "100%");
         $(".countText").text("UNLOCKED!!!!!!");
     } else {
-        var opa = parseInt((reactCount / unlocksNeeded)*100);
+        var opa = parseInt((reactCount / unlocksNeeded) * 100);
         $(".barfill").animate({
-            'width': opa+"%",
+                'width': opa + "%",
             },
-            400, function() {
-            /* stuff to do after animation is complete */
-        });
+            800,
+            function() {
+                /* stuff to do after animation is complete */
+            });
         $(".countText").text(reactCount + " OF " + unlocksNeeded);
         reactCount = 0;
         setTimeout(realTimeReactions, 2000);
