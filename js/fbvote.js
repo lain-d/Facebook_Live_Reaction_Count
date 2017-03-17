@@ -1,8 +1,8 @@
-var appID = "1646190352344234";
+var appID = "1780509962264342";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 //our real time and insight reaction data objects
-var unlocksNeeded = 1000;
+var unlocksNeeded = 5;
 var reactCount = 0;
 
 function getRandomInt(min, max) {
@@ -179,7 +179,12 @@ function applyVotes() {
         $(".countText").text("UNLOCKED!!!!!!");
     } else {
         var opa = parseInt((unlockVotes / unlocksNeeded)*100);
-        $(".barfill").css('width', opa+"%");
+        $(".barfill").animate({
+            'width': opa+"%",
+            },
+            200, function() {
+            /* stuff to do after animation is complete */
+        });
         $(".countText").text(reactCount + " OF " + unlocksNeeded);
         reactCount = 0;
         setTimeout(realTimeReactions, 2000);
