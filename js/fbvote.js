@@ -178,11 +178,11 @@ function applyVotes() {
         $(".barfill").css('width', "100%");
         $(".countText").text("UNLOCKED!!!!!!");
     } else {
-        var opa = parseInt((unlockVotes / unlocksNeeded)*100);
+        var opa = parseInt((reactCount / unlocksNeeded)*100);
         $(".barfill").animate({
             'width': opa+"%",
             },
-            200, function() {
+            400, function() {
             /* stuff to do after animation is complete */
         });
         $(".countText").text(reactCount + " OF " + unlocksNeeded);
