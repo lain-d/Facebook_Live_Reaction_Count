@@ -1,3 +1,33 @@
+@font-face {
+    font-family: dincb;
+    src: url('dincb.ttf');
+}
+
+
+.fillbar
+{
+      font-family: dincb;
+    position: absolute;
+    top: 648px;
+    width: 1215px;
+    height: 50px;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 25px;
+left: 33px;
+}
+
+.barfill
+{
+
+      font-family: dincb;
+    position: relative;
+    background-color: #e610ca;
+    height: 50px;
+    width: 0%;
+}
+
+
 .screen {
     width: 1280px;
     height: 720px;
@@ -22,11 +52,12 @@
 }
 
 .countText {
-    font-family: helvetica, sans-serif;
+  font-family: dincb;
     position: absolute;
-    top: 100px;
-    left: 10px;
-    color: pink;
+    text-align: center;
+    top: 648px;
+    left: 623px;
+    color: black;
     font-size: 50px;
     z-index: 1000000000;
 }

@@ -55,6 +55,7 @@ window.fbAsyncInit = function() {
 
 // Load the SDK asynchronously
 (function(d, s, id) {
+                $(".countText").text(reactCount + " OF " + unlocksNeeded);
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s);
@@ -65,6 +66,7 @@ window.fbAsyncInit = function() {
 
 //Once Logged in Start up The Voting App
 function startApp() {
+
     //Check to make sure the person gave credentials.
     FB.api('/me', function(response) {
         document.getElementById('status').innerHTML =
@@ -173,12 +175,12 @@ function applyVotes() {
     var unlockVotes = unlocksNeeded - reactCount;
     if (unlockVotes <= 0) {
         unlockVotes = 0;
-        $(".blackout").css('opacity', '0');
+        $(".barfill").css('width', "100%");
         $(".countText").text("UNLOCKED!!!!!!");
     } else {
-        var opa = unlockVotes / unlocksNeeded;
-        $(".blackout").css('opacity', opa);
-        $(".countText").text(unlockVotes + " Likes Needed To Unlock!");
+        var opa = parseInt((unlockVotes / unlocksNeeded)*100);
+        $(".barfill").css('width', opa+"%");
+        $(".countText").text(reactCount + " OF " + unlocksNeeded);
         reactCount = 0;
         setTimeout(realTimeReactions, 2000);
     }
