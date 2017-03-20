@@ -39,33 +39,35 @@
         position: absolute;
         top: 455px;
         left: 245px;
+        display: none;
     }
     
     #love {
         position: absolute;
         top: 308px;
         left: 245px;
+        display: none;
     }
     
     #wow {
         position: absolute;
-        top: 525px;
-        left: 650px;
-        display: none;
+        top: 393px;
+            left: 720px;
+ 
     }
     
     #haha {
         position: absolute;
-        top: 200px;
-        left: 1080px;
-        display: none;
+        top: 540px;
+            left: 720px;
+
     }
     
     #sad {
         position: absolute;
-        top: 299px;
-        left: 741px;
-        display: none;
+    top: 245px;
+    left: 720px;
+
     }
     
     #angry {
