@@ -163,6 +163,34 @@ function voteArrayCounter(data, next) {
     }
 }
 
+var testreactcount = 0;
+var testmode = false;
+
+document.addEventListener("keydown", function(event) {
+  console.log(event.which);
+  if(event.which === 34)
+  {
+        unlocksNeeded = 5000;
+        $("#logInStuff").hide();
+       $("#voteSettings").hide();
+       testmode = true;
+       testReacts();
+  }
+})
+
+
+function testReacts(){
+       console.log("test");
+testreactcount += Math.floor(Math.random()*300);
+reactCount =  testreactcount;
+
+applyVotes();
+
+}
+
+
+
+
 //If there are multiple pages of real Time reaction results (aka if there are more than 1000), 
 //this will get the next set of results.
 function pageLoop(url) {
@@ -173,6 +201,7 @@ function pageLoop(url) {
 //This will apply the vote values to the display. If you aren't counting a reaction,
 //make it invisible with CSS DON'T DELETE THE DIV
 function applyVotes() {
+           console.log("test2");
     var unlockVotes = unlocksNeeded - reactCount;
     if (unlockVotes <= 0) {
         unlockVotes = 0;
@@ -189,7 +218,14 @@ function applyVotes() {
             });
         $(".countText").text(reactCount + " OF " + unlocksNeeded);
         reactCount = 0;
+        if(testmode === false)
+        {
         setTimeout(realTimeReactions, 2000);
+        }
+        else
+        {
+             setTimeout(testReacts, 2000);
+        }
     }
 
 }

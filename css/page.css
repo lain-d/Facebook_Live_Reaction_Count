@@ -18,9 +18,21 @@
 .barfill {
     font-family: dincb;
     position: relative;
-    background-color: #e610ca;
+    background-color: #fb04f0;
     height: 50px;
     width: 0%;
+
+    overflow: visible !important;
+
+}
+
+.barfill img{
+
+    float: right;
+    height: 50px;
+    overflow: visible !important;
+    margin-right: -50px;
+
 }
 
 .screen {
