@@ -86,7 +86,9 @@ function startApp() {
             'Thanks for logging in, ' + response.name + '!';
         //check if we can get the userToken to work
         $("#logInStuff").fadeOut(200);
-        $("#voteSettings").fadeIn(250);
+        $("#voteSettings").fadeIn(250, function(){
+        	$("#pageIDval").focus();
+        });
     });
 }
 
