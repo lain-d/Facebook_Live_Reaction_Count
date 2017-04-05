@@ -60,7 +60,7 @@ video
     font-size: 50px;
     font-weight: bold;
     background-color: transparent;
-    color: white;
+    color: black;
     text-align: left;
     padding: 10px;
     border-radius: 50px;
@@ -79,24 +79,26 @@ video
     position: absolute;
     top: 296px;
     left: 765px;
-
+    display: none;
 }
 
 
 
 #like {
     position: absolute;
-    top: 616px;
-    left: 303px;
-    display: none;
+ top: 266px;
+    left: 895px;
+
+  display:block;
       
 
 }
 
 #wow {
     position: absolute;
-     top: 450px;
-    left: 765px;
+ top: 520px;
+    left: 895px;
+
   display:block;
 
 }
