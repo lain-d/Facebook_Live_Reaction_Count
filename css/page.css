@@ -15,11 +15,27 @@
         height: 35px;
         position: absolute;
         z-index: 999;
+        animation:bubble .4s;
+        transform: scale(0, 0);
+        animation-fill-mode: forwards;
     }
     
+@-webkit-keyframes bubble {
+    100% {
+        -webkit-transform: scale(1,1); 
+    }
+}
+
+@keyframes bubble {
+    100% {
+        transform: scale(1,1); 
+    }
+}
+
     .particle img {
-        width: 35px;
-        height: 35px;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
     }
     
     .voteValue {
