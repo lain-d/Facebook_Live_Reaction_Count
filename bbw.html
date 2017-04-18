@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Facebook Reaction Voting</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/page.css">
+    <style>
+@font-face {
+    font-family: avg;
+    src: url('avg.ttf');
+}
+
+    .screen {
+        background-image: url('bbw.jpg');
+    }
+    
+    .voteValue {
+        font-family: avg;
+        font-size: 55px;
+        color:white;
+    }
+    
+    #like {
+        display: none;
+    }
+    
+    #sad {
+        position: absolute;
+        top: 405px;
+        left: 845px;
+        display: none;
+    }
+    
+    #love {
+        position: absolute;
+      top: 610px;
+    left: 850px;
+        display: block;
+    }
+    
+    #haha {
+        position: absolute;
+    top: 610px;
+    left: 355px;
+        display: block;
+    }
+    
+    #wow {
+        position: absolute;
+        top: 438px;
+        left: 800px;
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="logInStuff" class="container" style="display:block">
+        You Need To Connect To Facebook First
+        <br>
+        <fb:login-button scope="" onlogin="checkLoginState();">
+        </fb:login-button>
+        <div id="status">
+        </div>
+    </div>
+    <div id="voteSettings" class="container">
+        <b>Please set Page and Post ID</b>
+        <br> PAGE Name/ID:
+        <br>
+        <input type="text" id="pageIDval">
+        <br> POST ID:
+        <br>
+        <input type="text" id="postIDval">
+        <br>
+        <button id="savebutt" class="btn">Save</button>
+        <br>
+        <div id="sm" style="display:none"></div>
+    </div>
+    <div class="screen">
+        <div class="voteValue" id="like"><span id="liken">0</span>
+            <div class="face like"></div>
+        </div>
+        <div class="voteValue" id="love"><span id="loven">0</span>
+            <div class="face love"></div>
+        </div>
+        <div class="voteValue" id="haha"><span id="hahan">0</span>
+            <div class="face haha"></div>
+        </div>
+        <div class="voteValue" id="wow"><span id="wown">0</span>
+            <div class="face wow"></div>
+        </div>
+        <div class="voteValue" id="angry"><span id="angryn">0</span>
+            <div class="face angry"></div>
+        </div>
+        <div class="voteValue" id="sad"><span id="sadn">0</span>
+            <div class="face sad"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/fbvote.min.js"></script>
+</body>
+
+</html>
