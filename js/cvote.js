@@ -3,7 +3,7 @@
 //bubble there...right now it's all hard coded (see lines 239-241)
 //Vs Bar is turned off. Should convert this into objects to take care of this, I know it looks like qBasic right now.
 
-var appID = "363856967314834";
+var appID = "410111042683836";
 //values will include the pageID, postID
 var currentValues = { "pageID": "", "postID": "" };
 var lastnew = 0;
