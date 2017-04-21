@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Reaction Voting</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/page.css">
+<style>
+.screen {
+		background-image: url('rpkim.jpg');
+}
+.voteValue{
+
+	color:white;
+	font-size:30px;
+	text-align: center;
+}
+#v0{
+	position: absolute;
+	display:block;
+	top: 386px;
+	left: 36px;
+}
+#v1{
+	position: absolute;
+	display:block;
+	top: 386px;
+	left: 244px;
+}
+#v2{
+	position: absolute;
+	display:block;
+	top: 386px;
+	left: 450px;
+}
+#v3{
+	position: absolute;
+	display:block;
+	top: 386px;
+	left: 659px;
+}
+#v4{
+	position: absolute;
+	display:block;
+	top: 386px;
+	left: 864px;
+}
+#v5{
+	position: absolute;
+	display:block;
+	top: 386px;
+	left: 1072px;
+}
+#v6{
+	position: absolute;
+	display:block;
+	top: 643px;
+left: 131px;
+}
+#v7{
+	position: absolute;
+	display:block;
+	top: 643px;
+left: 348px;
+}
+#v8{
+	position: absolute;
+	display:block;
+	top: 643px;
+left: 556px;
+}
+#v9{
+	position: absolute;
+	display:block;
+	top: 643px;
+left: 767px;
+}
+#v10{
+	position: absolute;
+	display:block;
+	top: 643px;
+left: 974px;
+}
+.hide{
+	display:none;
+}
+</style>
+</head>
+
+
+<body>
+<div id="logInStuff" class="container" style="display:block">
+You Need To Connect To Facebook First<br>
+<fb:login-button scope="" onlogin="checkLoginState();">
+</fb:login-button>
+<div id="status">
+</div>
+</div>
+
+<div id="voteSettings" class="container">
+<b>Please set Page and Post ID</b><br>
+PAGE Name/ID:<br>
+<input type="text" id="pageIDval"><br>
+POST ID:<br>
+<input type="text" id="postIDval"><br>
+<button id="savebutt" class="btn">Save</button><br>
+<div id="sm" style="display:none"></div>
+</div>
+<div class="screen">
+	<div class="voteValue" id="v0"><span id="choice0">0</span></div>
+	<div class="voteValue" id="v1"><span id="choice1">0</span></div>
+	<div class="voteValue" id="v2"><span id="choice2">0</span></div>
+	<div class="voteValue" id="v3"><span id="choice3">0</span></div>
+	<div class="voteValue" id="v4"><span id="choice4">0</span></div>
+	<div class="voteValue" id="v5"><span id="choice5">0</span></div>
+	<div class="voteValue" id="v6"><span id="choice6">0</span></div>
+		<div class="voteValue" id="v7"><span id="choice6">0</span></div>
+			<div class="voteValue" id="v8"><span id="choice6">0</span></div>
+				<div class="voteValue" id="v9"><span id="choice6">0</span></div>
+					<div class="voteValue" id="v10"><span id="choice6">0</span></div>
+<div class="hide">
+	<div class="valueboxes"></div>
+	<div class="countdown" id="countdown">Time Left to vote: 00:30:00</div>
+	<div class="tugofwarbar"><div class="percentbar" id="sidea">0%</div><div class="percentbar" id="sideb">0%</div></div>
+	<div class="winscreeen" id="winnera">LIKE WINS</div>
+	<div class="winscreeen" id="winnerb">LOVE WINS</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/cvote.js"></script>
+</body>
+</html>
