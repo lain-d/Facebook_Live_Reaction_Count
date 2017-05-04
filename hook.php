@@ -12,5 +12,29 @@ if(isset($_REQUEST['hub_challenge'])) {
 if ($hub_verify_token === $verify_token) {
     echo $challenge;
 }
+$input = json_decode(file_get_contents('php://input'), true);
+ 
+$sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+$message = $input['entry'][0]['messaging'][0]['message']['text'];
+
+$url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+$ch = curl_init($url);
+
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+    "message":{
+        "text":"Fuck off"
+    }
+}';
+$jsonDataEncoded = $jsonData;
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+if(!empty($input['entry'][0]['messaging'][0]['message'])){
+    $result = curl_exec($ch);
+}
+
 ?>
 
