@@ -9,7 +9,7 @@ var currentValues = { "pageID": "", "postID": "" };
 var lastnew = 0;
 var bigdate = 0;
 //our real time and insight reaction data objects
-var realtimer = { "#teamaja": 0, "#teamsasha": 0, "#teamalexis": 0, "#teamshea": 0, "#steamfarrah": 0, "#teamtrinity": 0, "#teamnina": 0, "#teamvalentina": 0, "#teampeppermint": 0};
+var realtimer = { "#teamaja": 0, "#teamsasha": 0, "#teamalexis": 0, "#teamshea": 0, "#teamfarrah": 0, "#teamtrinity": 0, "#teamnina": 0, "#teamvalentina": 0, "#teampeppermint": 0};
 var oldvotes = realtimer;
 var oldloves = 0;
 var oldlikes = 0;
