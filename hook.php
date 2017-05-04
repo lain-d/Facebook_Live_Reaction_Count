@@ -24,7 +24,7 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
 error_log($postback);
 
-if($postback)
+if($postback === "USER_DEFINED_PAYLOAD")
 {
 	$text = "yay";
 }
