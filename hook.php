@@ -24,9 +24,12 @@ $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
     },
-    "message":{
-        "text":"Fuck off"
-    }
+   "message":{
+    "attachment":{
+      "type":"image",
+      "payload":{
+        "url":"https://thecatapi.com/api/images/get?format=src&type=gif"
+      }
 }';
 $jsonDataEncoded = $jsonData;
 curl_setopt($ch, CURLOPT_POST, 1);
