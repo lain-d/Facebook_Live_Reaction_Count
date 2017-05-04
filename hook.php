@@ -25,13 +25,7 @@ $jsonData = '{
         "id":"'.$sender.'"
     },
    "message":{
-   	"text":"'.$sender.'",
-    "attachment":{
-      "type":"image",
-      "payload":{
-        "url":"https://thecatapi.com/api/images/get?format=src&type=gif"
-      }
-  }
+   	"text":"'.$sender.'"
 }
 }';
 $jsonDataEncoded = $jsonData;
