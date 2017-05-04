@@ -22,7 +22,7 @@ error_log(print_r($input, true));
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
-error_log(print_r($postback));
+error_log($postback);
 
 if($postback)
 {
