@@ -12,10 +12,23 @@ if(isset($_REQUEST['hub_challenge'])) {
 if ($hub_verify_token === $verify_token) {
     echo $challenge;
 }
+
+
+
 $input = json_decode(file_get_contents('php://input'), true);
  
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+$postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
+
+if($postback)
+{
+	$text = "yay";
+}
+else
+{
+	$text = "nay";
+}
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 $ch = curl_init($url);
@@ -25,7 +38,7 @@ $jsonData = '{
         "id":"'.$sender.'"
     },
    "message":{
-   	"text":"'.$sender.'"
+  "text":"'.$text.'"
 }
 }';
 $jsonDataEncoded = $jsonData;
