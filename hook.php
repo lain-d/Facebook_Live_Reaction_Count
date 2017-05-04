@@ -25,6 +25,7 @@ $jsonData = '{
         "id":"'.$sender.'"
     },
    "message":{
+   	"text":"'.$sender.'",
     "attachment":{
       "type":"image",
       "payload":{
