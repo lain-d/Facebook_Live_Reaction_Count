@@ -1,24 +1,23 @@
 @font-face {
     font-family: dincb;
-    src: url('dincb.ttf');
+    src: url('ITCAvantGardeStd-Bold.TTF');
 }
 
 .fillbar {
     font-family: dincb;
     position: absolute;
-    top: 648px;
-    width: 1215px;
+    top: 627px;
+    width: 1132px;
     height: 50px;
-    background-color: white;
+    background-color: #dedede;
     overflow: hidden;
-    border-radius: 25px;
-    left: 33px;
+    left: 74px;
 }
 
 .barfill {
     font-family: dincb;
     position: relative;
-    background-color: #fb04f0;
+    background-color: #8062cc;
     height: 50px;
     width: 0%;
 
@@ -62,11 +61,15 @@
     font-family: dincb;
     position: absolute;
     text-align: center;
-    top: 648px;
-    left: 555px;
+    top: 628px;
+    left: 500px;
     color: black;
     font-size: 50px;
     z-index: 1000000000;
+    letter-spacing: -2px;
+       -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 3.5px;
+   -webkit-text-stroke-color: #8062cc;
 }
 
 s
