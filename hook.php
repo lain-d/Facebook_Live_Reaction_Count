@@ -41,7 +41,7 @@ $jsonData = '{
         "id":"'.$sender.'"
     },
    "message":{
-  "text":"'.$text.'"
+  "text":"'.$text.' '.$sender.'"
 }
 }';
 $jsonDataEncoded = $jsonData;
