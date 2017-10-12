@@ -4,11 +4,14 @@ $redis = new Predis\Client(getenv('REDIS_URL'));
 if($redis)
 {
 echo "it works";
-$value = $redis->get('message');
+$value = $redis->get('HAHA');
+$value2 = $redis->get('LOVE');
 
 // Hello world
 print($value); 
-echo ($redis->exists('message')) ? "Oui" : "please populate the message key";
+print($value2); 
+
+
 }
 
 ?>
