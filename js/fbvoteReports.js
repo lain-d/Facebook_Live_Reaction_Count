@@ -194,10 +194,8 @@ function postToRedis(theData) {
     dataToPost = JSON.stringify(realtimer);
 $.ajax({
             type: "POST",
-            dataType: "json",
             url: "postresults.php",
             data: {hello:0},
-            contentType: "application/json; charset=utf-8",
             success: function(data){
                 console.log(data);
             },
