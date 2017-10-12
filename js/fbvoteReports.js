@@ -195,7 +195,7 @@ function postToRedis(theData) {
 $.ajax({
             type: "POST",
             url: "postresults.php",
-            data: {hello:0},
+            data: {dataSets:dataToPost},
             success: function(data){
                 console.log(data);
             },
