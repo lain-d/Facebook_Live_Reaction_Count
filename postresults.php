@@ -19,4 +19,3 @@ else
 echo "end";
 ?>
 
-curl -X POST -F 'dataSets={"LIKE":55,"LOVE":5,"WOW":1,"HAHA":4,"SAD":5,"ANGRY":1}' https://lhhvote.herokuapp.com/postresults.php
