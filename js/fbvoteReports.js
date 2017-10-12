@@ -191,12 +191,12 @@ function applyVotes() {
 }
 
 function postToRedis(theData) {
-    dataToPost = {"dataSets":JSON.stringify(realtimer)};
+    dataToPost = JSON.stringify(realtimer);
 $.ajax({
             type: "POST",
             dataType: "json",
             url: "postresults.php",
-            data: dataToPost,
+            data: {'dataSets': dataToPost},
             contentType: "application/json; charset=utf-8",
             success: function(data){
                 console.log(data);
