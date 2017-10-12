@@ -195,7 +195,7 @@ $.ajax({
             type: "POST",
             dataType: "json",
             url: "postresults.php",
-            data: {data:theData},
+            data: {dataSets:JSON.stringify(realtimer)},
             contentType: "application/json; charset=utf-8",
             success: function(data){
                 console.log(data);
