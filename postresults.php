@@ -3,7 +3,8 @@
 require('vendor/autoload.php');
 $redis = new Predis\Client(getenv('REDIS_URL'));
 echo "hello";
-var_dump($_POST);
+print_r($_POST);
+var_dump($_POST['dataSets']);
 
 if(isset($_POST['dataSets'])){
  $obj = json_decode($_POST['dataSets']);
