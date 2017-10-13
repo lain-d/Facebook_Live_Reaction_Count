@@ -1,6 +1,6 @@
 <?php
 
-require('vendor/autoload.php');
+require('../vendor/autoload.php');
 $redis = new Predis\Client(getenv('REDIS_URL'));
 if(isset($_POST['dataSets'])){
  $obj = json_decode($_POST['dataSets']);
