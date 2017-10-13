@@ -1,6 +1,5 @@
 <?php
 require('../vendor/autoload.php');
-header("Content-type: text/xml");
 $redis = new Predis\Client(getenv('REDIS_URL'));
 if (isset($redis))
 {
