@@ -9,7 +9,7 @@ $results = $redis->mGet($emojis);
 
 echo "<?xml version=\"1.0\"?><results>";
 foreach ($emojis  as $key => $value) {
-    echo "<".$value.">".$results[$key]."</".$value.">.";
+    echo "<".$value.">".$results[$key]."</".$value.">";
 }
 echo "</results>";
 }
