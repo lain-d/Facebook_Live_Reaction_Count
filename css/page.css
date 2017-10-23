@@ -62,19 +62,41 @@ video {
     z-index: 1001;
 }
 
+
+
+
 #haha {
     position: absolute;
-    top: 628px;
-    left: 908px;
+    top: 625px;
+    left: 140px;
     display: block;
 }
 
 #love {
 position: absolute;
-    top: 628px;
-    left: 908px;
-    display: none;
+    top: 625px;
+    left: 760px;
+    display: block;
 }
+
+#wow {
+position: absolute;
+    top: 625px;
+    left: 450px;
+    display: block;
+}
+
+#sad {
+    position: absolute;
+    top: 625px;
+    left: 1070px;
+    display: block;
+
+}
+
+
+
+
 
 #like {
     position: absolute;
@@ -83,20 +105,6 @@ position: absolute;
     display: none;
 }
 
-#wow {
-position: absolute;
-    top: 623px;
-    left: 300px;
-    display: block;
-}
-
-#sad {
-    position: absolute;
-    top: 400px;
-    left: 650px;
-    display: none;
-    display: none;
-}
 
 #angry {
     position: absolute;
