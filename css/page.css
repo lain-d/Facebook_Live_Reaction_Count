@@ -22,16 +22,14 @@
     width: 0%;
 
     overflow: visible !important;
-
 }
 
-.barfill img{
+.barfill img {
 
     float: right;
     height: 50px;
     overflow: visible !important;
     margin-right: -50px;
-
 }
 
 .screen {
@@ -67,13 +65,10 @@
     font-size: 50px;
     z-index: 1000000000;
     letter-spacing: -2px;
-       -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-   -webkit-text-stroke-width: 3.5px;
-   -webkit-text-stroke-color: #286058;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 3.5px;
+    -webkit-text-stroke-color: black;
 }
-
-s
-/* this is if you want a foreground image */
 
 .particle {
     width: 35px;
