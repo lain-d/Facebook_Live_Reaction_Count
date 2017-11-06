@@ -9,7 +9,7 @@
     top: 627px;
     width: 1132px;
     height: 50px;
-    background-color: #dedede;
+    background-color: #b3b2b8;
     overflow: hidden;
     left: 74px;
 }
@@ -17,7 +17,7 @@
 .barfill {
     font-family: dincb;
     position: relative;
-    background-color: #286058;
+    background-color: #FFFFFF;
     height: 50px;
     width: 0%;
 
