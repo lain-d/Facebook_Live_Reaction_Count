@@ -9,7 +9,7 @@
     top: 627px;
     width: 1132px;
     height: 50px;
-    background-color: #b3b2b8;
+    background-color: #8062cc;
     overflow: hidden;
     left: 74px;
 }
@@ -50,7 +50,7 @@
     top: 0;
     left: 0;
     z-index: 1;
-    background-color: purple;
+    background-color: #8062cc;
     background-image: url('static.png');
     opacity: 1;
 }
@@ -67,7 +67,7 @@
     letter-spacing: -2px;
     -webkit-text-fill-color: white;
     -webkit-text-stroke-width: 3.5px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: #8062cc;
 }
 
 .particle {
