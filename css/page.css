@@ -65,9 +65,9 @@
     font-size: 50px;
     z-index: 1000000000;
     letter-spacing: -2px;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 3.5px;
-    -webkit-text-stroke-color: #000;
+	// -webkit-text-fill-color: white;
+    // -webkit-text-stroke-width: 3.5px;
+    // -webkit-text-stroke-color: #000;
 }
 
 .particle {
